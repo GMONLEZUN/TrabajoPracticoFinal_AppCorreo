@@ -66,11 +66,13 @@ namespace TP_CAI
                 Console.WriteLine("CodigoProvincia \tNombre Provincia");
                 if (codigoregion == regiones[i].CodigoRegion)
                 {
-                    //Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine($"{regiones[i].CodigoProvincia} \t\t\t{regiones[i].NombreProvincia}");
-                    //Console.ResetColor();
-                    //listaAuxiliar2.Add(regiones[i].CodigoProvincia);
                 }
+            }
+
+            if (true)
+            {
+
             }
         }
 
