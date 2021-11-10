@@ -64,10 +64,12 @@ namespace TP_CAI
         {
             foreach (var cliente in clientes)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("¡Bienvenido!");
+                Console.ResetColor();
                 Console.WriteLine($"Cliente: {cliente.RazonSocial}");
                 Console.WriteLine($"CUIT {cliente.CUIT}");
-                Console.WriteLine("****************************");
+                Console.WriteLine("----------------------------");
                 Console.WriteLine("Usuarios Autorizados:");
                 Console.WriteLine($"Nombre {cliente.NombreClAut}");
                 Console.WriteLine($"DNI {cliente.dniClAut}");
