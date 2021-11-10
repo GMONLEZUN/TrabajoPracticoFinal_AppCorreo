@@ -23,12 +23,12 @@ namespace TP_CAI
         {
             var partes = linea.Split('|');
             NumeroCliente = partes[0];
-            NombreCliente = partes[1];
-            TipoPersona = partes[2];
-            RazonSocial = partes[3];
-            CUIT = partes[4];
+            TipoPersona = partes[1];
+            RazonSocial = partes[2];
+            CUIT = partes[3];
+            dniClAut = partes[4];
             NombreClAut = partes[5];
-            dniClAut = partes[6];
+            
         }
         public void LeerMaestroCliente(string numeroCliente)
         {

@@ -52,7 +52,8 @@ namespace TP_CAI
                     }
                 case 3:
                     {
-                        //caso de Consulta de Estado de envío
+                        var nuevaConsultaEnvio = OrdenDeServicio.MostrarOrden();
+                        Console.ReadLine();
                         break;
                     }
                 case 4:

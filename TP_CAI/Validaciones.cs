@@ -16,12 +16,12 @@ namespace TP_CAI
             {
                 Console.WriteLine(mensaje);
                 numeroCliente = Console.ReadLine();
-                if (numeroCliente.Length > 3)
+                if (numeroCliente.Length > 6)
                 {
                     Console.WriteLine("El número de cliente no puede poseer más de 3 dígitos");
                     continue;
                 }
-                if (numeroCliente.Length < 3)
+                if (numeroCliente.Length < 6)
                 {
                     Console.WriteLine("El número de cliente no puede poseer menos de 3 dígitos");
                     continue;

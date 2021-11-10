@@ -183,7 +183,7 @@ namespace TP_CAI
                 string locSelecc = "";
                 string sucSelecc = "";
                 //----------------------------------Pedimos el tipo de retiro del envío---------------------------------
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("1-Entrega en puerta\n2-Entrega en sucursal");
                 Console.ResetColor();
                 var ingreso = Console.ReadLine();
@@ -356,7 +356,7 @@ namespace TP_CAI
         public void VerSucursalPorLocalidad(int codigoLocalidad)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("CodigoSucursal \tNombre Sucursal");
+            Console.WriteLine("CodigoSucursal \t\t\tNombre Sucursal");
             Console.ResetColor();
             Dictionary<int, string> auxiliarLocalidad = new Dictionary<int, string>();
             bool encontrado = false;

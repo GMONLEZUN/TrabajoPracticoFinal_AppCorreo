@@ -116,6 +116,7 @@ namespace TP_CAI
             if (Console.ReadKey(true).Key == ConsoleKey.S)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Orden de servicio confirmada");
                 Console.WriteLine("Gracias por utilizar nuestros servicios");
             }
             else
