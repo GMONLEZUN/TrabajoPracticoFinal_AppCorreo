@@ -18,7 +18,7 @@ namespace TP_CAI
         {
             var nuevoEnvioNacional = new EnvioNacional();
             
-            Console.WriteLine("Nueva Orden de Servicio ");
+            Console.WriteLine("Nueva Orden de Servicio - Envío Nacional");
             while (true)
             {
                 Console.WriteLine("Seleccione el tipo de paquete que desea enviar \n1- Correspondencia \n2- Encomienda ");

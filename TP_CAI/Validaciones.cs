@@ -8,9 +8,10 @@ namespace TP_CAI
 {
     class Validaciones
     {
+        
         static public string ValidarCliente(string mensaje)
         {
-            var numeroCliente = Console.ReadLine();
+            string numeroCliente;
             do
             {
                 Console.WriteLine(mensaje);
@@ -30,6 +31,7 @@ namespace TP_CAI
 
             return numeroCliente;
         }
+        //Rehacer validar opción que permita el ingreso de diferentes tipos de opciones con min y max**************
         static public int ValidarOpcion(string ingreso)
         {
             bool ingresoCorrecto = int.TryParse(ingreso, out int opcion);

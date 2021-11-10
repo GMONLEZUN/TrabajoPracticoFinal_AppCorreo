@@ -126,9 +126,9 @@ namespace TP_CAI
                     Console.WriteLine("Seleccione la sucursal donde se realizará la presentación del envío");
                     nuevaSeleccionRecepcion.VerSucursalPorLocalidad(codLocalidad);
                     var ingresoCodSucursal = Console.ReadLine();
-                    var ingresoCorr4 = int.TryParse(ingresoCodLocalidad, out int codSucursal);
+                    var ingresoCorr4 = int.TryParse(ingresoCodSucursal, out int codSucursal);
                     sucSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionSucursal(codSucursal);
-                    nuevaSeleccionRecepcion.NombreLocalidad = sucSelecc;
+                    nuevaSeleccionRecepcion.NombreSucursal = sucSelecc;
                 }
 
                 break;
