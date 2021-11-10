@@ -5,3 +5,10 @@ C:\Users\gabo_\source\repos\TP_CAI\TP_CAI\obj\Debug\TP_CAI.csproj.AssemblyRefere
 C:\Users\gabo_\source\repos\TP_CAI\TP_CAI\obj\Debug\TP_CAI.csproj.CoreCompileInputs.cache
 C:\Users\gabo_\source\repos\TP_CAI\TP_CAI\obj\Debug\TP_CAI.exe
 C:\Users\gabo_\source\repos\TP_CAI\TP_CAI\obj\Debug\TP_CAI.pdb
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\obj\Debug\TP_CAI.csproj.AssemblyReference.cache
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\obj\Debug\TP_CAI.csproj.CoreCompileInputs.cache
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\obj\Debug\TP_CAI.exe
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\obj\Debug\TP_CAI.pdb
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\bin\Debug\TP_CAI.exe.config
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\bin\Debug\TP_CAI.exe
+C:\Users\gabo_\source\repos\TP_CAI\TrabajoPracticoFinal_AppCorreo\TP_CAI\bin\Debug\TP_CAI.pdb
