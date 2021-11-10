@@ -60,19 +60,24 @@ namespace TP_CAI
 
         public void VerProvinciaPorRegion(int codigoregion)
         {
-            //List<int> listaAuxiliar2 = new List<int>();
-            for (int i = 0; i < regiones.Count; i++)
+            Console.WriteLine("CodigoProvincia \tNombre Provincia");
+            Dictionary<int, string> auxiliarRegion = new Dictionary<int, string>();
+            bool encontrado = false;
+            foreach (var region in regiones)
             {
-                Console.WriteLine("CodigoProvincia \tNombre Provincia");
-                if (codigoregion == regiones[i].CodigoRegion)
+                
+                if (region.CodigoRegion == codigoregion)
                 {
-                    Console.WriteLine($"{regiones[i].CodigoProvincia} \t\t\t{regiones[i].NombreProvincia}");
+                    encontrado = auxiliarRegion.ContainsKey(region.CodigoProvincia);
+                    if (!encontrado)
+                    {
+                        auxiliarRegion.Add(region.CodigoProvincia,region.NombreProvincia);
+                    }   
                 }
             }
-
-            if (true)
+            foreach (var item in auxiliarRegion)
             {
-
+                Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
             }
         }
 
