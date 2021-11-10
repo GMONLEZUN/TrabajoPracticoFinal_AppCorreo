@@ -11,12 +11,13 @@ namespace TP_CAI
         public string TipoPaquete { get; private set; }
         public string PesoPaquete { get; private set; }
         public string TipoEnvio { get; private set; }
-        public string TipoRecepcion { get; private set; }
-        
+
+        List<Region> ListaSeleccionRetiro = new List<Region>();
 
         public static EnvioNacional Ingresar() 
         {
             var nuevoEnvioNacional = new EnvioNacional();
+            
             Console.WriteLine("Nueva Orden de Servicio ");
             while (true)
             {
@@ -87,41 +88,29 @@ namespace TP_CAI
                 string pesoEncomienda = "Correspondencia hasta 500g";
                 nuevoEnvioNacional.PesoPaquete = pesoEncomienda;
             }
-            while (true)
-            {
-                Console.WriteLine("Seleccione el tipo de recepción:");
-                Console.WriteLine("1-Retiro en puerta\n2-Presentación en sucursal");
-                var ingreso = Console.ReadLine();
-                bool ingresoCorrecto = int.TryParse(ingreso, out int opcion);
-                if (opcion == 1)
-                {
-                    nuevoEnvioNacional.TipoRecepcion = "Retiro en puerta";
-                    Console.WriteLine("Seleccione la región donde se realizará la presentación del envío: ");
-                    Console.WriteLine("10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
-                    var ingresoCodRegion = Console.ReadLine();
-                    var ingresoCorr = int.TryParse(ingresoCodRegion, out int codRegion);
-                    var nuevaRegion = new Region();
-                    nuevaRegion.LeerMaestroRegiones();
-                    Console.WriteLine("Seleccione la provincia donde se realizará la presentación del envío"); 
-                    nuevaRegion.VerProvinciaPorRegion(codRegion);
+            Console.WriteLine("Seleccione el tipo de recepción:");
+            var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
+            nuevoEnvioNacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
 
-                }
-               
-                break;
-            }
             nuevoEnvioNacional.MostrarResumenEnvioNacional();
+
             return nuevoEnvioNacional;
 
         }
         public void MostrarResumenEnvioNacional()
          {
             Console.WriteLine("********************");
-            Console.WriteLine("Resumen de la operación");
+            Console.WriteLine("Resumen de la operación");//agregamos número?
             Console.WriteLine("********************");
             Console.WriteLine("Tipo de servicio: Envío Nacional");
             Console.WriteLine($"Tipo de paquete: {TipoPaquete}");
             Console.WriteLine($"Peso del paquete: {PesoPaquete}");
-
+            foreach (var seleccionRetiro in ListaSeleccionRetiro)
+            {
+                seleccionRetiro.MostrarNuevaRecepcion();
+            }
+            
+            
         }
         
     }

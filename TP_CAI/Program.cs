@@ -10,9 +10,8 @@ namespace TP_CAI
     {
         static void Main(string[] args)
         {
-            Cliente clienteActivo = new Cliente();
             string numeroCliente = Validaciones.ValidarCliente("Ingrese el número de cliente");
-            
+            Cliente clienteActivo = new Cliente();
 
             //Console.WriteLine("Ingrese el número de documento");
             //Validar
