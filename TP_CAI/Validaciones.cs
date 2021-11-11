@@ -26,6 +26,7 @@ namespace TP_CAI
                     Console.WriteLine("El número de cliente no puede poseer menos de 3 dígitos");
                     continue;
                 }
+                //validar que sea solo número
                 break;
             } while (true);
 
