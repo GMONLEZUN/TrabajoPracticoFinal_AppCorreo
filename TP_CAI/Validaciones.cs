@@ -14,43 +14,106 @@ namespace TP_CAI
             string numeroCliente;
             do
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(mensaje);
+                Console.ResetColor();
                 numeroCliente = Console.ReadLine();
-                if (numeroCliente.Length > 6)
+                char[] numeroClienteaArray = numeroCliente.ToArray();
+                bool encontroNoDigito = false;
+                foreach (var item in numeroClienteaArray)
                 {
-                    Console.WriteLine("El número de cliente no puede poseer más de 3 dígitos");
+                    if (!char.IsDigit(item) && !encontroNoDigito)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("El número de cliente no acepta otro caracter que no sea número");
+                        Console.ResetColor();
+                        encontroNoDigito = true;
+                    }
+
+                }
+                if (numeroCliente.Length > 6 && !encontroNoDigito)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de cliente no puede poseer más de 6 dígitos");
+                    Console.ResetColor();
                     continue;
                 }
-                if (numeroCliente.Length < 6)
+                if (numeroCliente.Length < 6 && !encontroNoDigito)
                 {
-                    Console.WriteLine("El número de cliente no puede poseer menos de 3 dígitos");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de cliente no puede poseer menos de 6 dígitos");
+                    Console.ResetColor();
                     continue;
                 }
-                //validar que sea solo número
+                if (encontroNoDigito)
+                {
+                    continue;
+                }
                 break;
             } while (true);
 
             return numeroCliente;
         }
-        //Rehacer validar opción que permita el ingreso de diferentes tipos de opciones con min y max**************
-        static public int ValidarOpcion(string ingreso)
+
+        static public int ValidarOpcion(string mensaje, string mensajeOpciones, int OpcMin, int OpcMax)
         {
-            bool ingresoCorrecto = int.TryParse(ingreso, out int opcion);
+            int opcion;
             do
             {
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(mensaje);
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(mensajeOpciones);
+                Console.ResetColor();
+                var ingreso = Console.ReadLine();
+                bool ingresoCorrecto = int.TryParse(ingreso, out opcion);
                 if (!ingresoCorrecto)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Ingreso inválido, intente nuevamente");
+                    Console.ResetColor();
                     continue;
                 }
-                if (opcion < 0)
+                if (opcion < OpcMin)
                 {
-                    Console.WriteLine("Ingreso inválido, la opción no puede ser menor a 0");
+                    Console.WriteLine($"Ingreso inválido, la opción no puede ser menor a {OpcMin}");
                     continue;
                 }
-                if (opcion > 4)
+                if (opcion > OpcMax)
                 {
-                    Console.WriteLine("Ingreso inválido, la opción no puede ser mayor a 4");
+                    Console.WriteLine($"Ingreso inválido, la opción no puede ser mayor a {OpcMax}");
+                    continue;
+                }
+                break;
+            } while (true);
+            return opcion;
+        }
+
+        static public int ValidarRegion(string mensaje, string mensajeOpciones)
+        {
+            int opcion;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(mensaje);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(mensajeOpciones);
+                var ingreso = Console.ReadLine();
+                bool ingresoCorrecto = int.TryParse(ingreso, out opcion);
+                if (!ingresoCorrecto)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ingreso inválido, intente nuevamente");
+                    Console.ResetColor();
+                    continue;
+                }
+                if (!(opcion == 10 || opcion == 20 || opcion == 30 || opcion == 40))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("La opción ingresada no es correcta, intente nuevamente");
+                    Console.ResetColor();
                     continue;
                 }
                 break;

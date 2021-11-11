@@ -43,12 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnvioInternacional.cs" />
     <Compile Include="EnvioNacional.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="EstadoDeCuenta.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="OrdenDeServicio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Region.cs" />
+    <Compile Include="RegionInternacional.cs" />
     <Compile Include="Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>

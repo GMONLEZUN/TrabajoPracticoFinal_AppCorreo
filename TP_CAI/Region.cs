@@ -72,31 +72,21 @@ namespace TP_CAI
                 string locSelecc = "";
                 string sucSelecc = "";
                 //----------------------------------Pedimos el tipo de retiro del envío---------------------------------
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("1-Retiro en puerta\n2-Presentación en sucursal");
-                Console.ResetColor();
-                var ingreso = Console.ReadLine();
-                bool ingresoCorrecto = int.TryParse(ingreso, out int opcion);
-                if (opcion == 1)
+                int opcionSelec = Validaciones.ValidarOpcion("-", "1-Retiro en puerta\n2-Presentación en sucursal", 1, 2);
+                if (opcionSelec == 1)
                 {
                     nuevaSeleccionRecepcion.TipoRecepcion = "Retiro en puerta";
                     //----------------------------------Pedimos la región de retiro del envío---------------------------------
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Seleccione la región donde se realizará el retiro del envío: ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
-                    Console.ResetColor();
-                    var ingresoCodRegion = Console.ReadLine();
-                    var ingresoCorr = int.TryParse(ingresoCodRegion, out int codRegion);
+                    int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
 
                     nuevaSeleccionRecepcion.LeerMaestroRegiones();
                     //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará el retiro del envío");
                     Console.ResetColor();
-                    nuevaSeleccionRecepcion.VerProvinciaPorRegion(codRegion);
-                    var ingresoCodProvincia = Console.ReadLine();
-                    var ingresoCorr2 = int.TryParse(ingresoCodProvincia, out int codProvincia);
+                    
+                    //nuevaSeleccionRecepcion.VerProvinciaPorRegion(opcionRegion);
+                    int codProvincia = nuevaSeleccionRecepcion.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionRecepcion.NombreProvincia = provSelecc;
 
@@ -104,9 +94,7 @@ namespace TP_CAI
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará el retiro del envío");
                     Console.ResetColor();
-                    nuevaSeleccionRecepcion.VerLocalidadPorProvincia(codProvincia);
-                    var ingresoCodLocalidad = Console.ReadLine();
-                    var ingresoCorr3 = int.TryParse(ingresoCodLocalidad, out int codLocalidad);
+                    int codLocalidad = nuevaSeleccionRecepcion.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionRecepcion.NombreLocalidad = locSelecc;
                     //----------------------------------Pedimos la dirección exacta de retiro del envío---------------------------------
@@ -123,45 +111,32 @@ namespace TP_CAI
                     nuevaSeleccionRecepcion.RetiroCodigoPostal = CodPostal;
 
                 }
-                if (opcion == 2)
+                if (opcionSelec == 2)
                 {
                     nuevaSeleccionRecepcion.TipoRecepcion = "Presentacion en sucursal";
                     //----------------------------------Pedimos la región de retiro del envío---------------------------------
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Seleccione la región donde se realizará el retiro del envío: ");
-                    Console.ResetColor();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
-                    Console.ResetColor();
-                    var ingresoCodRegion = Console.ReadLine();
-                    var ingresoCorr = int.TryParse(ingresoCodRegion, out int codRegion);
+                    int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
 
                     nuevaSeleccionRecepcion.LeerMaestroRegiones();
                     //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la presentación del envío");
                     Console.ResetColor();
-                    nuevaSeleccionRecepcion.VerProvinciaPorRegion(codRegion);
-                    var ingresoCodProvincia = Console.ReadLine();
-                    var ingresoCorr2 = int.TryParse(ingresoCodProvincia, out int codProvincia);
+                    int codProvincia = nuevaSeleccionRecepcion.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionRecepcion.NombreProvincia = provSelecc;
                     //----------------------------------Pedimos la localidad de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará la presentación del envío");
                     Console.ResetColor();
-                    nuevaSeleccionRecepcion.VerLocalidadPorProvincia(codProvincia);
-                    var ingresoCodLocalidad = Console.ReadLine();
-                    var ingresoCorr3 = int.TryParse(ingresoCodLocalidad, out int codLocalidad);
+                    int codLocalidad = nuevaSeleccionRecepcion.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionRecepcion.NombreLocalidad = locSelecc;
                     //----------------------------------Pedimos la sucursal de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la sucursal donde se realizará la presentación del envío");
                     Console.ResetColor();
-                    nuevaSeleccionRecepcion.VerSucursalPorLocalidad(codLocalidad);
-                    var ingresoCodSucursal = Console.ReadLine();
-                    var ingresoCorr4 = int.TryParse(ingresoCodSucursal, out int codSucursal);
+                    int codSucursal = nuevaSeleccionRecepcion.VerSucursalPorLocalidad(codLocalidad);
                     sucSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionSucursal(codSucursal);
                     nuevaSeleccionRecepcion.NombreSucursal = sucSelecc;
                 }
@@ -182,46 +157,30 @@ namespace TP_CAI
                 string provSelecc = "";
                 string locSelecc = "";
                 string sucSelecc = "";
-                //----------------------------------Pedimos el tipo de retiro del envío---------------------------------
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("1-Entrega en puerta\n2-Entrega en sucursal");
-                Console.ResetColor();
-                var ingreso = Console.ReadLine();
-                bool ingresoCorrecto = int.TryParse(ingreso, out int opcion);
-                if (opcion == 1)
+                //----------------------------------Pedimos el tipo de entrega del envío---------------------------------
+                int opcionSelec = Validaciones.ValidarOpcion("-", "1-Retiro en puerta\n2-Presentación en sucursal", 1, 2);
+                if (opcionSelec == 1)
                 {
                     nuevaSeleccionEntrega.TipoEntrega = "Entrega en puerta";
-                    //----------------------------------Pedimos la región de retiro del envío---------------------------------
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Seleccione la región donde se realizará la entrega del envío: ");
-                    Console.ResetColor();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
-                    Console.ResetColor();
-                    var ingresoCodRegion = Console.ReadLine();
-                    var ingresoCorr = int.TryParse(ingresoCodRegion, out int codRegion);
-
+                    //----------------------------------Pedimos la región de entrega del envío---------------------------------
+                    int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
-                    //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
+                    //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la entrega del envío");
                     Console.ResetColor();
-                    nuevaSeleccionEntrega.VerProvinciaPorRegion(codRegion);
-                    var ingresoCodProvincia = Console.ReadLine();
-                    var ingresoCorr2 = int.TryParse(ingresoCodProvincia, out int codProvincia);
+                    int codProvincia = nuevaSeleccionEntrega.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionEntrega.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionEntrega.NombreProvinciaEntrega = provSelecc;
 
-                    //----------------------------------Pedimos la localidad de retiro del envío---------------------------------
+                    //----------------------------------Pedimos la localidad de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará la entrega del envío");
                     Console.ResetColor();
-                    nuevaSeleccionEntrega.VerLocalidadPorProvincia(codProvincia);
-                    var ingresoCodLocalidad = Console.ReadLine();
-                    var ingresoCorr3 = int.TryParse(ingresoCodLocalidad, out int codLocalidad);
+                    int codLocalidad = nuevaSeleccionEntrega.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionEntrega.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionEntrega.NombreLocalidadEntrega = locSelecc;
-                    //----------------------------------Pedimos la dirección exacta de retiro del envío---------------------------------
+                    //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Ingrese la dirección exacta donde se realizara la entrega del envío");
                     Console.ResetColor();
@@ -235,45 +194,31 @@ namespace TP_CAI
                     nuevaSeleccionEntrega.CodigoPostalEntrega = CodPostal;
 
                 }
-                if (opcion == 2)
+                if (opcionSelec == 2)
                 {
                     nuevaSeleccionEntrega.TipoEntrega = "Entrega en sucursal";
-                    //----------------------------------Pedimos la región de retiro del envío---------------------------------
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Seleccione la región donde se realizará la entrega del envío: ");
-                    Console.ResetColor();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
-                    Console.ResetColor();
-                    var ingresoCodRegion = Console.ReadLine();
-                    var ingresoCorr = int.TryParse(ingresoCodRegion, out int codRegion);
-
+                    //----------------------------------Pedimos la región de entrega del envío---------------------------------
+                    int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
-                    //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
+                    //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la entrega del envío");
                     Console.ResetColor();
-                    nuevaSeleccionEntrega.VerProvinciaPorRegion(codRegion);
-                    var ingresoCodProvincia = Console.ReadLine();
-                    var ingresoCorr2 = int.TryParse(ingresoCodProvincia, out int codProvincia);
+                    int codProvincia = nuevaSeleccionEntrega.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionEntrega.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionEntrega.NombreProvinciaEntrega = provSelecc;
-                    //----------------------------------Pedimos la localidad de retiro del envío---------------------------------
+                    //----------------------------------Pedimos la localidad de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará la entrega del envío");
                     Console.ResetColor();
-                    nuevaSeleccionEntrega.VerLocalidadPorProvincia(codProvincia);
-                    var ingresoCodLocalidad = Console.ReadLine();
-                    var ingresoCorr3 = int.TryParse(ingresoCodLocalidad, out int codLocalidad);
+                    int codLocalidad = nuevaSeleccionEntrega.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionEntrega.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionEntrega.NombreLocalidadEntrega = locSelecc;
-                    //----------------------------------Pedimos la sucursal de retiro del envío---------------------------------
+                    //----------------------------------Pedimos la sucursal de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la sucursal donde se realizará la entrega del envío");
                     Console.ResetColor();
-                    nuevaSeleccionEntrega.VerSucursalPorLocalidad(codLocalidad);
-                    var ingresoCodSucursal = Console.ReadLine();
-                    var ingresoCorr4 = int.TryParse(ingresoCodSucursal, out int codSucursal);
+                    int codSucursal = nuevaSeleccionEntrega.VerSucursalPorLocalidad(codLocalidad);
                     sucSelecc = nuevaSeleccionEntrega.DevuelveSeleccionSucursal(codSucursal);
                     nuevaSeleccionEntrega.NombreSucursalEntrega = sucSelecc;
                 }
@@ -300,7 +245,7 @@ namespace TP_CAI
             }
         }
         //----------------------------------Dado un código de región nos devuelve las provincias para seleccionar------------------------
-        public void VerProvinciaPorRegion(int codigoregion)
+        public int VerProvinciaPorRegion(int codigoregion)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("CodigoProvincia \tNombre Provincia");
@@ -324,9 +269,35 @@ namespace TP_CAI
                 Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
                 Console.ResetColor();
             }
-        }
+            // validamos que el ingreso del usuario corresponda a lo que se muestra
+            int opcion;
+            do
+            {
+                var ingreso = Console.ReadLine();
+                bool ingresoOpcionValida = false;
+                bool ingresoCorrecto = int.TryParse(ingreso, out opcion);
+                foreach (var item in auxiliarRegion)
+                {
+                    if (item.Key == opcion)
+                    {
+                        ingresoOpcionValida = true;
+                    }
+                }
+                if (!ingresoOpcionValida || !ingresoCorrecto)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("La opción ingresada no es correcta, intente nuevamente");
+                    Console.ResetColor();
+                    continue;
+                }
+                break;
+            } while (true);
+            return opcion;
+        } 
+    
+
         //----------------------------------Dado un código de provincia nos devuelve las localidades para seleccionar------------------------
-        public void VerLocalidadPorProvincia(int codigoProvincia)
+        public int VerLocalidadPorProvincia(int codigoProvincia)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("CodigoLocalidad \tNombre Localidad");
@@ -351,9 +322,33 @@ namespace TP_CAI
                 Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
                 Console.ResetColor();
             }
+            // validamos que el ingreso del usuario corresponda a lo que se muestra
+            int opcion;
+            do
+            {
+                var ingreso = Console.ReadLine();
+                bool ingresoOpcionValida = false;
+                bool ingresoCorrecto = int.TryParse(ingreso, out opcion);
+                foreach (var item in auxiliarProvincia)
+                {
+                    if (item.Key == opcion)
+                    {
+                        ingresoOpcionValida = true;
+                    }
+                }
+                if (!ingresoOpcionValida || !ingresoCorrecto)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("La opción ingresada no es correcta, intente nuevamente");
+                    Console.ResetColor();
+                    continue;
+                }
+                break;
+            } while (true);
+            return opcion;
         }
         //----------------------------------Dado un código de localidad nos devuelve las sucursales para seleccionar------------------------
-        public void VerSucursalPorLocalidad(int codigoLocalidad)
+        public int VerSucursalPorLocalidad(int codigoLocalidad)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("CodigoSucursal \t\t\tNombre Sucursal");
@@ -377,6 +372,30 @@ namespace TP_CAI
                 Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
                 Console.ResetColor();
             }
+            // validamos que el ingreso del usuario corresponda a lo que se muestra
+            int opcion;
+            do
+            {
+                var ingreso = Console.ReadLine();
+                bool ingresoOpcionValida = false;
+                bool ingresoCorrecto = int.TryParse(ingreso, out opcion);
+                foreach (var item in auxiliarLocalidad)
+                {
+                    if (item.Key == opcion)
+                    {
+                        ingresoOpcionValida = true;
+                    }
+                }
+                if (!ingresoOpcionValida || !ingresoCorrecto)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("La opción ingresada no es correcta, intente nuevamente");
+                    Console.ResetColor();
+                    continue;
+                }
+                break;
+            } while (true);
+            return opcion;
         }
         //----------------------------------Dado un código de provincia nos devuelve la provincia elegida---------------------------------
         public string DevuelveSeleccionProvincia(int codigoProvincia)

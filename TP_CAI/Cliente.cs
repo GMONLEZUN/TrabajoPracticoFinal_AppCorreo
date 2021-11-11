@@ -51,7 +51,9 @@ namespace TP_CAI
                     }
                     if (clEncontrado == false)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("El cliente ingresado no se encuentra en nuestra base de datos");
+                        Console.ResetColor();
                         Console.ReadKey();
                         System.Environment.Exit(0);
                     }

@@ -6,25 +6,24 @@ using System.Threading.Tasks;
 
 namespace TP_CAI
 {
-    class EnvioNacional
+    class EnvioInternacional
     {
-        public string TipoPaquete { get; private set; }
-        public string PesoPaquete { get; private set; }
-        public string TiempoEnvio { get; private set; }
+        public string TipoPaqueteInt { get; private set; }
+        public string PesoPaqueteInt { get; private set; }
+        public string TiempoEnvioInt { get; private set; }
 
         List<Region> ListaSeleccionRetiro = new List<Region>();
-        List<Region> ListaSeleccionEntrega = new List<Region>();
+        List<RegionInternacional> ListaSeleccionEntregaInt = new List<RegionInternacional>();
 
-        public static EnvioNacional Ingresar() 
+        public static EnvioInternacional Ingresar()
         {
-            var nuevoEnvioNacional = new EnvioNacional();
+            var nuevoEnvioInternacional = new EnvioInternacional();
 
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Nueva Orden de Servicio - Envío Nacional");
+            Console.WriteLine("Nueva Orden de Servicio - Envío Internacional");
             Console.ResetColor();
             while (true)
             {
-                
                 int opcionSelec = Validaciones.ValidarOpcion("Seleccione el tipo de paquete que desea enviar: ", "1 - Correspondencia \n2 - Encomienda", 1, 2);
                 string tipoPaquete = "";
                 if (opcionSelec == 1)
@@ -35,14 +34,14 @@ namespace TP_CAI
                 {
                     tipoPaquete = "Encomienda";
                 }
-                nuevoEnvioNacional.TipoPaquete = tipoPaquete; 
+                nuevoEnvioInternacional.TipoPaqueteInt = tipoPaquete;
                 break;
             }
-            if (nuevoEnvioNacional.TipoPaquete == "Encomienda")
+            if (nuevoEnvioInternacional.TipoPaqueteInt == "Encomienda")
             {
                 string pesoEncomienda;
                 int opcionSelec = Validaciones.ValidarOpcion("Seleccione el peso de la encomienda que desea enviar:", "1- Bultos hasta 10Kg. \n2- Bultos hasta 20Kg.\n3- Bultos hasta 30Kg.", 1, 3);
-                
+
                 switch (opcionSelec)
                 {
                     case 1:
@@ -66,14 +65,13 @@ namespace TP_CAI
                             break;
                         }
                 }
-                nuevoEnvioNacional.PesoPaquete = pesoEncomienda;
+                nuevoEnvioInternacional.PesoPaqueteInt = pesoEncomienda;
             }
-            if (nuevoEnvioNacional.TipoPaquete == "Correspondencia")
+            if (nuevoEnvioInternacional.TipoPaqueteInt == "Correspondencia")
             {
                 string pesoEncomienda = "Correspondencia hasta 500g";
-                nuevoEnvioNacional.PesoPaquete = pesoEncomienda;
+                nuevoEnvioInternacional.PesoPaqueteInt = pesoEncomienda;
             }
-
             do
             {
                 int opcionSelec = Validaciones.ValidarOpcion("Seleccione el tiempo de envío:", "1- Envío urgente. \n2- Envío normal.", 1, 2);
@@ -86,7 +84,7 @@ namespace TP_CAI
                 {
                     tiempoEnvio = "Envío normal";
                 }
-                nuevoEnvioNacional.TiempoEnvio = tiempoEnvio;
+                nuevoEnvioInternacional.TiempoEnvioInt = tiempoEnvio;
                 break;
             } while (true);
 
@@ -94,14 +92,14 @@ namespace TP_CAI
             Console.WriteLine("Seleccione el tipo de recepción:");
             Console.ResetColor();
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
-            nuevoEnvioNacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
+            nuevoEnvioInternacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Seleccione el tipo de entrega:");
+            Console.WriteLine("Entrega");
             Console.ResetColor();
-            var nuevaSeleccionEntrega = Region.SeleccionEntrega();
-            nuevoEnvioNacional.ListaSeleccionEntrega.Add(nuevaSeleccionEntrega);
+            var nuevaSeleccionEntregaInt = RegionInternacional.SeleccionEntregaInt();
+            nuevoEnvioInternacional.ListaSeleccionEntregaInt.Add(nuevaSeleccionEntregaInt);
 
-            nuevoEnvioNacional.MostrarResumenEnvioNacional();
+            nuevoEnvioInternacional.MostrarResumenEnvioInternacional();
             //----------------------------------------------CONFIRMACION----------------------------------------------------------------------------
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("¿Desea confirmar el servicio? [S/N]");
@@ -119,27 +117,27 @@ namespace TP_CAI
             }
             Console.ResetColor();
             Console.ReadLine();
-            
-            return nuevoEnvioNacional;
+
+            return nuevoEnvioInternacional;
         }
-        public void MostrarResumenEnvioNacional()
-         {
+        public void MostrarResumenEnvioInternacional()
+        {
             Console.WriteLine("***********************");
             Console.WriteLine("Resumen de la operación");//agregamos número?
             Console.WriteLine("***********************");
-            Console.WriteLine("Tipo de servicio: Envío Nacional");
-            Console.WriteLine($"Tipo de paquete: {TipoPaquete}");
-            Console.WriteLine($"Peso del paquete: {PesoPaquete}");
-            Console.WriteLine($"Tiempo de envío: {TiempoEnvio}");
+            Console.WriteLine("Tipo de servicio: Envío Internacional");
+            Console.WriteLine($"Tipo de paquete: {TipoPaqueteInt}");
+            Console.WriteLine($"Peso del paquete: {PesoPaqueteInt}");
+            Console.WriteLine($"Tiempo de envío: {TiempoEnvioInt}");
             foreach (var seleccionRetiro in ListaSeleccionRetiro)
             {
                 seleccionRetiro.MostrarNuevaRecepcion();
             }
-            foreach (var seleccionEntrega in ListaSeleccionEntrega)
+            foreach (var seleccionEntrega in ListaSeleccionEntregaInt)
             {
-                seleccionEntrega.MostrarNuevaEntrega();
+                seleccionEntrega.MostrarNuevaEntregaInternacional();
             }
         }
-        
+
     }
 }

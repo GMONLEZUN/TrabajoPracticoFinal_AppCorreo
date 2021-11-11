@@ -1,0 +1,22 @@
+1|Uruguay|Países Limitrofes
+2|Paraguay|Países Limitrofes
+3|Brasil|Países Limitrofes
+4|Chile|Países Limitrofes
+5|Bolivia|Países Limitrofes
+6|Colombia|Lationamérica (no limítrofes)
+7|Perú|Lationamérica (no limítrofes)
+8|Ecuador|Lationamérica (no limítrofes)
+9|México|América del Norte
+10|Venezuela|Lationamérica (no limítrofes)
+11|Canadá|América del Norte
+12|Estados Unidos|América del Norte
+13|España|Europa
+14|Italia|Europa
+15|Francia|Europa
+16|Portugal|Europa
+17|Suiza|Europa
+18|China|Asia
+19|India|Asia
+20|Vietnam|Asia
+21|Japón|Asia
+22|Israel|Asia
