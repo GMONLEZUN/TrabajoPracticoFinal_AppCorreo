@@ -1,83 +1,83 @@
-10|Región Pampeana|1|Buenos Aires|101|Lanús|500|Kiosco Peñihue|Bachmann Axel
-10|Región Pampeana|1|Buenos Aires|101|Lanús|501|Kiosco Pronto|Perez Ponsa Federico
-10|Región Pampeana|1|Buenos Aires|101|Lanús|502|Kiosco Plaza Central|Flores Diego
-10|Región Pampeana|1|Buenos Aires|102|Lomas de Zamora|503|Kiosco Spaze|Mekhitarian Krikor Sevag
-10|Región Pampeana|1|Buenos Aires|102|Lomas de Zamora|504|Kiosco Casandra|Hernandez Guerrero Gilberto
-10|Región Pampeana|1|Buenos Aires|102|Lomas de Zamora|505|Kiosco La Ochava|Hoffman Alejandro
-10|Región Pampeana|1|Buenos Aires|103|Quilmes|506|Kiosco El Clon|Hungaski Robert Andrew
-10|Región Pampeana|1|Buenos Aires|103|Quilmes|507|Kiosco Vitral|Cuenca Jimenez Jose Fernando
-10|Región Pampeana|1|Buenos Aires|103|Quilmes|508|Kiosco Paquito|Rodriguez Vila Andres
-10|Región Pampeana|2|Capital Federal|104|Palermo|509|Librería Aceto|Real De Azua Ernesto
-10|Región Pampeana|2|Capital Federal|104|Palermo|510|Confitería Balcarce|Slipak Sergio
-10|Región Pampeana|2|Capital Federal|104|Palermo|511|Pet Shop Bambina|Salinas Herrera Pablo
-10|Región Pampeana|2|Capital Federal|105|Almagro|512|Verdulería La Boutique|Valerga Diego
-10|Región Pampeana|2|Capital Federal|105|Almagro|513|Demo Computación|Sosa Tomas
-10|Región Pampeana|2|Capital Federal|105|Almagro|514|Cip Celulares|Villanueva Mario
-10|Región Pampeana|2|Capital Federal|106|Belgrano|515|Todo Tecno Celulares|Acosta Pablo Ismael
-10|Región Pampeana|2|Capital Federal|106|Belgrano|516|Bono Pet Pet Shop|Paveto Kevin
-10|Región Pampeana|2|Capital Federal|106|Belgrano|517|Unoencien|Rodriguez Jorge Luis
-10|Región Pampeana|2|Capital Federal|106|Belgrano|518|Restaurante La Nonina|Perez Maximiliano
-20|Región NOA|3|Catamarca|107|San Fernando del Valle de Catamarca|519|Tienda Kositas|Pierrot Facundo
-30|Región NEA|4|Chaco|108|Gran Resistencia|520|Kone Celulares|Dolezal Cristian
-30|Región NEA|4|Chaco|109|Presidencia Roque Saénz Peña|521|Farmacia Avenida|Della Morte German
-40|Región Patagónica|5|Chubut|110|Comodoro Rivadavia|522|Farmacia Pasteur|Mahia Gustavo
-40|Región Patagónica|5|Chubut|111|Puerto Madryn|523|Farmacia Los Ríos|Martinez Martin David
-40|Región Patagónica|5|Chubut|112|Trelew|524|Ortopedia Limayquen|Julia Ernesto
-40|Región Patagónica|5|Chubut|112|Trelew|525|Perfumería Center|Llanos Guillermo
-10|Región Pampeana|6|Córdoba|113|Córdoba|526|EFA Distribuidora|Benedetti Julio
-10|Región Pampeana|6|Córdoba|113|Córdoba|527|Pescadería Cipoletti|Villegas Franco
-10|Región Pampeana|6|Córdoba|113|Córdoba|528|Rey de Copas Vinería|Spata German
-10|Región Pampeana|6|Córdoba|114|Río Cuarto|529|Fotocopias Todo Copias|Perelman Hernan
-10|Región Pampeana|6|Córdoba|115|Villa María|530|Dynamic Copias|Fell Sebastian
-30|Región NEA|7|Corrientes|116|Corrientes|531|La Bocata Rotisería|Coro Lucas
-30|Región NEA|7|Corrientes|116|Corrientes|532|Kiosco Bubba|Garcia Raimundo
-30|Región NEA|7|Corrientes|117|Goya|533|Librería Colores|Cuevas Alex
-30|Región NEA|7|Corrientes|118|Curuzú Cuatiá|534|Farmacia Arevalo|Mayorga Nicolas
-10|Región Pampeana|8|Entre Ríos|119|Paraná|535|Ciber Nuestro|Aguilar Andres
-10|Región Pampeana|8|Entre Ríos|119|Paraná|536|Kiosco Alonso|Zuriel Marisa
-10|Región Pampeana|8|Entre Ríos|120|Concordia|537|Kiosco Milka|Zapata Charles Santiago
-10|Región Pampeana|8|Entre Ríos|120|Concordia|538|Librería Pink|Cimer Emanuel
-10|Región Pampeana|8|Entre Ríos|121|Gualeguaychú|539|Vinoteca De Guarda|Contin Daniel
-10|Región Pampeana|8|Entre Ríos|121|Gualeguaychú|540|Kiosco Independencia|Wisniacki Flavio
-30|Región NEA|9|Formosa|122|Formosa|541|Altos Sur|Gomez Carlos David
-30|Región NEA|9|Formosa|123|Clorinda|542|Cyber Universitario|Molina Pablo Sebastian
-20|Región NOA|10|Jujuy|124|San Salvador de Jujuy|543|Librería Casper|Malbran Guillermo
-20|Región NOA|10|Jujuy|125|San Pedro de Jujuy|544|Pinturería Iacono|Gimenez Santiago
-10|Región Pampeana|11|La Pampa|126|Santa Rosa|545|Kiosco Adri|Leon Juan Carlos
-10|Región Pampeana|11|La Pampa|127|General Pico|546|Ferromax|Perez Pietronave Carlos
-20|Región NOA|12|La Rioja|128|La Rioja|547|Kiosco Yrigoyen|Fernandez Maria Florencia
-20|Región NOA|12|La Rioja|129|Chilecito|548|Kiosko Tolve|Ocantos Manuel
-50|Región de Cuyo|13|Mendoza|130|Mendoza|549|Fox Informática|Garcia Lemos Federico
-50|Región de Cuyo|13|Mendoza|130|Mendoza|550|Foto Paz Digital|Chiarot Cesar
-50|Región de Cuyo|13|Mendoza|131|San Rafael|551|Centro de Pagos|Martinez De Negri Gonzalo
-50|Región de Cuyo|13|Mendoza|132|Maipú|552|Kiosco Bus Stop|Pernas Agustin Baltazar
-30|Región NEA|14|Misiones|133|Posadas|553|Kiosco Happy|Pineda Polanco Adolfo
-30|Región NEA|14|Misiones|134|Oberá|554|La Kiosquería|Sica Mauro
-30|Región NEA|14|Misiones|135|Puerto Iguazú|555|Tinta Barroca|Cuberli Emiliano
-40|Región Patagónica|15|Neuquén|136|Neuquén|556|Kiosco Papelas|Anino Sergio
-40|Región Patagónica|15|Neuquén|137|San Martín de los Andes|557|Kiosco Chinita|Spector Sebastian
-40|Región Patagónica|15|Neuquén|138|Villa La Angostura|558|Eurocamping|Caro Esteban
-40|Región Patagónica|16|Río Negro|139|San Carlos de Barilloche|559|Pack Postale|Vinardi Ezequiel
-40|Región Patagónica|16|Río Negro|140|El Bolsón|560|EC Electrónica|Albistur Damian
-40|Región Patagónica|16|Río Negro|141|Las Grutas|561|Parador Dover|Palu Andres
-20|Región NOA|17|Salta|142|Salta|562|Papelote|Carraro Denise
-50|Región de Cuyo|18|San Juan|143|San Juan|563|Librería Block|Hernandez Amura Gilberto
-50|Región de Cuyo|18|San Juan|144|Jáchal|564|Alot Staples|Sanz Luis
-50|Región de Cuyo|19|San Luis|145|San Luis|565|Kiosco Tops|Churba Daniel Albert
-50|Región de Cuyo|19|San Luis|145|San Luis|566|Auditel|Kapitanchuk Tomas
-50|Región de Cuyo|19|San Luis|146|Villa Mercedes|567|Kiosco Chila|Wainer Daniel
-50|Región de Cuyo|19|San Luis|147|Villa de Merlo|568|Librería New Life|Zamani Andres
-40|Región Patagónica|20|Santa Cruz|148|Rio Gallegos|569|Open Shop|Olivares Daniel
-40|Región Patagónica|20|Santa Cruz|149|Caleta Olivia|570|Kiosco Constanza|Altieri Alejandro
-40|Región Patagónica|20|Santa Cruz|150|El Calafate|571|Copyvip|Vazquez Massaro Maximiliano H
-10|Región Pampeana|21|Santa Fe|151|Rosario|572|Datamak|Basso Leonardo
-10|Región Pampeana|21|Santa Fe|152|La Capital|573|El Copión|Ruperez Miguel
-10|Región Pampeana|21|Santa Fe|153|General López|574|Librería La Meca|Anelli Antonio
-20|Región NOA|22|Santiago del Estero|154|Santiago del Estero|575|Infinito|Meza Anahi
-20|Región NOA|22|Santiago del Estero|155|Termas de Río Hondo|576|Phone House|Tomas Falcon Jesus
-40|Región Patagónica|23|Tierra del Fuego|156|Ushuaia|577|Kiosco Kube|Conde Adrian
-40|Región Patagónica|23|Tierra del Fuego|156|Ushuaia|578|Oveja Negra|Villarreal Hector
-40|Región Patagónica|23|Tierra del Fuego|157|Río Grande|579|Colormix|Ueti Silvio Shigueo
-40|Región Patagónica|23|Tierra del Fuego|157|Río Grande|580|Minimarket Los Olivos|Acosta Martin Ezequiel
-20|Región NOA|24|Tucumán|158|San Miguel de Tucumán|581|Librería Rima|Dellepiani Fernando
-20|Región NOA|24|Tucumán|159|Tafí Viejo|582|Todo Herrajes|Pascual Diego
+10|Región Pampeana|1|Buenos Aires|101|Lanús|500|Kiosco Peñihue|Coni, Dr. Emilio R. 773|1381|Bachmann Axel
+10|Región Pampeana|1|Buenos Aires|101|Lanús|501|Kiosco Pronto|Zavalia 476|1872|Perez Ponsa Federico
+10|Región Pampeana|1|Buenos Aires|101|Lanús|502|Kiosco Plaza Central|Maipú 424|2158|Flores Diego
+10|Región Pampeana|1|Buenos Aires|102|Lomas de Zamora|503|Kiosco Spaze|Pico 151|4120|Mekhitarian Krikor Sevag
+10|Región Pampeana|1|Buenos Aires|102|Lomas de Zamora|504|Kiosco Casandra|Puan 695|1833|Hernandez Guerrero Gilberto
+10|Región Pampeana|1|Buenos Aires|102|Lomas de Zamora|505|Kiosco La Ochava|Correa 251|4869|Hoffman Alejandro
+10|Región Pampeana|1|Buenos Aires|103|Quilmes|506|Kiosco El Clon|Membrillar 446|3921|Hungaski Robert Andrew
+10|Región Pampeana|1|Buenos Aires|103|Quilmes|507|Kiosco Vitral|Jacarandá 771|1113|Cuenca Jimenez Jose Fernando
+10|Región Pampeana|1|Buenos Aires|103|Quilmes|508|Kiosco Paquito|del Corro, Canónigo Miguel 395|4089|Rodriguez Vila Andres
+10|Región Pampeana|2|Capital Federal|104|Palermo|509|Librería Aceto|García del Río 39|1048|Real De Azua Ernesto
+10|Región Pampeana|2|Capital Federal|104|Palermo|510|Confitería Balcarce|Garmendia 533|3469|Slipak Sergio
+10|Región Pampeana|2|Capital Federal|104|Palermo|511|Pet Shop Bambina|Crisólogo Larralde 281|2363|Salinas Herrera Pablo
+10|Región Pampeana|2|Capital Federal|105|Almagro|512|Verdulería La Boutique|Vespucio, Liberto Antonio 205|4716|Valerga Diego
+10|Región Pampeana|2|Capital Federal|105|Almagro|513|Demo Computación|Miller 119|2719|Sosa Tomas
+10|Región Pampeana|2|Capital Federal|105|Almagro|514|Cip Celulares|Rosales 497|3271|Villanueva Mario
+10|Región Pampeana|2|Capital Federal|106|Belgrano|515|Todo Tecno Celulares|Campana 931|2476|Acosta Pablo Ismael
+10|Región Pampeana|2|Capital Federal|106|Belgrano|516|Bono Pet Pet Shop|Virrey Arredondo 748|3491|Paveto Kevin
+10|Región Pampeana|2|Capital Federal|106|Belgrano|517|Unoencien|Victorica, Benjamín 73|4118|Rodriguez Jorge Luis
+10|Región Pampeana|2|Capital Federal|106|Belgrano|518|Restaurante La Nonina|Balbastro 265|1684|Perez Maximiliano
+20|Región NOA|3|Catamarca|107|San Fernando del Valle de Catamarca|519|Tienda Kositas|Valle Iberlucea, Enrique del 486|4826|Pierrot Facundo
+30|Región NEA|4|Chaco|108|Gran Resistencia|520|Kone Celulares|Alberdi, Juan Bautista 609|4973|Dolezal Cristian
+30|Región NEA|4|Chaco|109|Presidencia Roque Saénz Peña|521|Farmacia Avenida|Rivadavia 659|3925|Della Morte German
+40|Región Patagónica|5|Chubut|110|Comodoro Rivadavia|522|Farmacia Pasteur|Larrazábal 891|4626|Mahia Gustavo
+40|Región Patagónica|5|Chubut|111|Puerto Madryn|523|Farmacia Los Ríos|Delgado 405|4229|Martinez Martin David
+40|Región Patagónica|5|Chubut|112|Trelew|524|Ortopedia Limayquen|Intendente Cantilo 389|4804|Julia Ernesto
+40|Región Patagónica|5|Chubut|112|Trelew|525|Perfumería Center|Boyacá 436|1548|Llanos Guillermo
+10|Región Pampeana|6|Córdoba|113|Córdoba|526|EFA Distribuidora|Ortiz de Ocampo 910|4952|Benedetti Julio
+10|Región Pampeana|6|Córdoba|113|Córdoba|527|Pescadería Cipoletti|Carapachay 761|2124|Villegas Franco
+10|Región Pampeana|6|Córdoba|113|Córdoba|528|Rey de Copas Vinería|Washington 723|1409|Spata German
+10|Región Pampeana|6|Córdoba|114|Río Cuarto|529|Fotocopias Todo Copias|Caminito 931|1491|Perelman Hernan
+10|Región Pampeana|6|Córdoba|115|Villa María|530|Dynamic Copias|Urunday 41|2195|Fell Sebastian
+30|Región NEA|7|Corrientes|116|Corrientes|531|La Bocata Rotisería|Reservistas Argentinos 45|2728|Coro Lucas
+30|Región NEA|7|Corrientes|116|Corrientes|532|Kiosco Bubba|Záldivar, Pedro F. 302|3282|Garcia Raimundo
+30|Región NEA|7|Corrientes|117|Goya|533|Librería Colores|García, Juan Agustín 465|2594|Cuevas Alex
+30|Región NEA|7|Corrientes|118|Curuzú Cuatiá|534|Farmacia Arevalo|Goyena, Pedro 842|2049|Mayorga Nicolas
+10|Región Pampeana|8|Entre Ríos|119|Paraná|535|Ciber Nuestro|Vedia, Enrique de 937|4215|Aguilar Andres
+10|Región Pampeana|8|Entre Ríos|119|Paraná|536|Kiosco Alonso|Moreno, Perito 549|3036|Zuriel Marisa
+10|Región Pampeana|8|Entre Ríos|120|Concordia|537|Kiosco Milka|Esteves Sagui 344|3646|Zapata Charles Santiago
+10|Región Pampeana|8|Entre Ríos|120|Concordia|538|Librería Pink|Superí 295|3986|Cimer Emanuel
+10|Región Pampeana|8|Entre Ríos|121|Gualeguaychú|539|Vinoteca De Guarda|Maza 361|2230|Contin Daniel
+10|Región Pampeana|8|Entre Ríos|121|Gualeguaychú|540|Kiosco Independencia|Guzmán 305|4043|Wisniacki Flavio
+30|Región NEA|9|Formosa|122|Formosa|541|Altos Sur|Patricias Argentinas 856|4280|Gomez Carlos David
+30|Región NEA|9|Formosa|123|Clorinda|542|Cyber Universitario|Zavaleta 412|2134|Molina Pablo Sebastian
+20|Región NOA|10|Jujuy|124|San Salvador de Jujuy|543|Librería Casper|Quebracho 54|3538|Malbran Guillermo
+20|Región NOA|10|Jujuy|125|San Pedro de Jujuy|544|Pinturería Iacono|Callao 849|2356|Gimenez Santiago
+10|Región Pampeana|11|La Pampa|126|Santa Rosa|545|Kiosco Adri|Olleros 77|3565|Leon Juan Carlos
+10|Región Pampeana|11|La Pampa|127|General Pico|546|Ferromax|Juramento 697|1560|Perez Pietronave Carlos
+20|Región NOA|12|La Rioja|128|La Rioja|547|Kiosco Yrigoyen|Pinto 594|3977|Fernandez Maria Florencia
+20|Región NOA|12|La Rioja|129|Chilecito|548|Kiosko Tolve|Vintter, General Lorenzo 846|2172|Ocantos Manuel
+50|Región de Cuyo|13|Mendoza|130|Mendoza|549|Fox Informática|Medrano 654|2332|Garcia Lemos Federico
+50|Región de Cuyo|13|Mendoza|130|Mendoza|550|Foto Paz Digital|Valle, Aristóbulo del 585|4119|Chiarot Cesar
+50|Región de Cuyo|13|Mendoza|131|San Rafael|551|Centro de Pagos|Zapata 682|1151|Martinez De Negri Gonzalo
+50|Región de Cuyo|13|Mendoza|132|Maipú|552|Kiosco Bus Stop|Unanue 780|2038|Pernas Agustin Baltazar
+30|Región NEA|14|Misiones|133|Posadas|553|Kiosco Happy|Albarracín de Sarmiento, Paula 883|2760|Pineda Polanco Adolfo
+30|Región NEA|14|Misiones|134|Oberá|554|La Kiosquería|Valle, María Remedios del 438|4993|Sica Mauro
+30|Región NEA|14|Misiones|135|Puerto Iguazú|555|Tinta Barroca|Brasil 177|1123|Cuberli Emiliano
+40|Región Patagónica|15|Neuquén|136|Neuquén|556|Kiosco Papelas|Ibáñez 691|2336|Anino Sergio
+40|Región Patagónica|15|Neuquén|137|San Martín de los Andes|557|Kiosco Chinita|Pasteur 697|4314|Spector Sebastian
+40|Región Patagónica|15|Neuquén|138|Villa La Angostura|558|Eurocamping|Uspallata 676|2855|Caro Esteban
+40|Región Patagónica|16|Río Negro|139|San Carlos de Barilloche|559|Pack Postale|Cruz, Osvaldo 153|4210|Vinardi Ezequiel
+40|Región Patagónica|16|Río Negro|140|El Bolsón|560|EC Electrónica|Intendente Noel 463|3867|Albistur Damian
+40|Región Patagónica|16|Río Negro|141|Las Grutas|561|Parador Dover|Nazarre 512|3470|Palu Andres
+20|Región NOA|17|Salta|142|Salta|562|Papelote|Pasco 240|1129|Carraro Denise
+50|Región de Cuyo|18|San Juan|143|San Juan|563|Librería Block|Laferrere, Gregorio de 500|2256|Hernandez Amura Gilberto
+50|Región de Cuyo|18|San Juan|144|Jáchal|564|Alot Staples|Sucre, Mariscal A. José de 274|1098|Sanz Luis
+50|Región de Cuyo|19|San Luis|145|San Luis|565|Kiosco Tops|Lacarra 497|4531|Churba Daniel Albert
+50|Región de Cuyo|19|San Luis|145|San Luis|566|Auditel|Vittoria, Francisco de 793|3124|Kapitanchuk Tomas
+50|Región de Cuyo|19|San Luis|146|Villa Mercedes|567|Kiosco Chila|Besares 280|3651|Wainer Daniel
+50|Región de Cuyo|19|San Luis|147|Villa de Merlo|568|Librería New Life|Aranguren, Dr. F. 263|2746|Zamani Andres
+40|Región Patagónica|20|Santa Cruz|148|Rio Gallegos|569|Open Shop|Las Heras, General 412|4257|Olivares Daniel
+40|Región Patagónica|20|Santa Cruz|149|Caleta Olivia|570|Kiosco Constanza|La Pampa 273|1734|Altieri Alejandro
+40|Región Patagónica|20|Santa Cruz|150|El Calafate|571|Copyvip|Balbín, Ricardo 198|4491|Vazquez Massaro Maximiliano H
+10|Región Pampeana|21|Santa Fe|151|Rosario|572|Datamak|Ucacha 58|4983|Basso Leonardo
+10|Región Pampeana|21|Santa Fe|152|La Capital|573|El Copión|Forest 12|2298|Ruperez Miguel
+10|Región Pampeana|21|Santa Fe|153|General López|574|Librería La Meca|Juana de Arco 337|3817|Anelli Antonio
+20|Región NOA|22|Santiago del Estero|154|Santiago del Estero|575|Infinito|Lastra 907|3526|Meza Anahi
+20|Región NOA|22|Santiago del Estero|155|Termas de Río Hondo|576|Phone House|Moldes 200|4352|Tomas Falcon Jesus
+40|Región Patagónica|23|Tierra del Fuego|156|Ushuaia|577|Kiosco Kube|Perú 510|1655|Conde Adrian
+40|Región Patagónica|23|Tierra del Fuego|156|Ushuaia|578|Oveja Negra|Naon, Romulo S. 263|2218|Villarreal Hector
+40|Región Patagónica|23|Tierra del Fuego|157|Río Grande|579|Colormix|Roldán, Belisario 242|2776|Ueti Silvio Shigueo
+40|Región Patagónica|23|Tierra del Fuego|157|Río Grande|580|Minimarket Los Olivos|Ecuador 887|3563|Acosta Martin Ezequiel
+20|Región NOA|24|Tucumán|158|San Miguel de Tucumán|581|Librería Rima|Zinny 228|4577|Dellepiani Fernando
+20|Región NOA|24|Tucumán|159|Tafí Viejo|582|Todo Herrajes|Pacheco 325|1156|Pascual Diego

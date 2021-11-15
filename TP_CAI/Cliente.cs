@@ -95,5 +95,21 @@ namespace TP_CAI
             }
             return clienteActivo;
         }
+        public void MostrarClienteActivo() 
+        {
+            foreach (var cliente in clientes)
+            {
+                Console.WriteLine($"Cliente N°: {cliente.NumeroCliente}\t\t\t{cliente.RazonSocial}\n");
+            }
+            
+        }
+
+        public void EscribirClienteActivo(StreamWriter writer) 
+        {
+            foreach (var cliente in clientes)
+            {
+                writer.WriteLine($"Cliente N°: {cliente.NumeroCliente}\t\t\t{cliente.RazonSocial}\n");
+            }
+        }
     }
 }

@@ -202,14 +202,27 @@ namespace TP_CAI
 
         public void MostrarNuevaEntregaInternacional()
         {
+            Console.WriteLine("");
             Console.WriteLine("Datos de Entrega");
-            Console.WriteLine("----------------");
-            Console.WriteLine($"Destinatario: {NombreDestinatario}\t DNI: {NumeroDNIdestinatario}");
-            Console.WriteLine($"Tipo de recepcion: {TipoEntregaInt}");
-            Console.WriteLine($"Provincia: {NombreEstadoEntregaInt}");
-            Console.WriteLine($"Localidad: {NombreLocalidadEntregaInt}");
+            Console.WriteLine("-----------------------------------------------------------------------");
+            Console.WriteLine($"Destinatario: {NombreDestinatario}\t\t\tDNI: {NumeroDNIdestinatario}");
+            Console.WriteLine("");
+            Console.WriteLine($"Tipo de entrega: {TipoEntregaInt}");
+            Console.WriteLine($"País: {NombrePais}");
+            Console.WriteLine($"Provincia: {NombreEstadoEntregaInt}\t\t\tLocalidad: {NombreLocalidadEntregaInt}");
             Console.WriteLine($"Dirección: {DireccionEntregaInt}\t Código Postal: {CodigoPostalEntregaInt}");
-
+        }
+        public void EscribirNuevaEntregaInternacional(StreamWriter writer)
+        {
+            writer.WriteLine("");
+            writer.WriteLine("Datos de Entrega");
+            writer.WriteLine("-----------------------------------------------------------------------");
+            writer.WriteLine($"Destinatario: {NombreDestinatario}\t\t\tDNI: {NumeroDNIdestinatario}");
+            writer.WriteLine("");
+            writer.WriteLine($"Tipo de entrega: {TipoEntregaInt}");
+            writer.WriteLine($"País: {NombrePais}");
+            writer.WriteLine($"Provincia: {NombreEstadoEntregaInt}\t\t\tLocalidad: {NombreLocalidadEntregaInt}");
+            writer.WriteLine($"Dirección: {DireccionEntregaInt}\t Código Postal: {CodigoPostalEntregaInt}");
         }
     }
 }

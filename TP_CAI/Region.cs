@@ -38,6 +38,10 @@ namespace TP_CAI
         public int CodigoPostalEntrega { get; private set; }
         public string NombreDestinatario { get; private set; }
         public string NumeroDNIdestinatario { get; private set; }
+        public string SucursalDireccion { get; private set; }
+        public string SucursalCodigoPostal { get; private set; }
+        public string SucursalDireccionEntrega { get; private set; }
+        public string SucursalCodigoPostalEntrega { get; private set; }
 
         const string maestroRegiones = "MaestroRegiones.txt";
 
@@ -54,7 +58,9 @@ namespace TP_CAI
             NombreLocalidad = datos[5];
             CodigoSucursal = int.Parse(datos[6]);
             NombreSucursal = datos[7];
-            TitularSucursal = datos[8];
+            SucursalDireccion = datos[8];
+            SucursalCodigoPostal = datos[9];
+            TitularSucursal = datos[10];
         }
         public Region()
         {
@@ -465,6 +471,9 @@ namespace TP_CAI
         {
             Dictionary<int, string> auxiliarDSucursal = new Dictionary<int, string>();
             bool encontrado = false;
+            //string guardarDireccionSucursal = "";
+            //string guardarCodPostalSucursal = "";
+            string guardarSucursal = "";
             foreach (var region in regiones)
             {
                 if (region.CodigoSucursal == codigoSucursal)
@@ -473,55 +482,114 @@ namespace TP_CAI
                     if (!encontrado)
                     {
                         auxiliarDSucursal.Add(region.CodigoSucursal, region.NombreSucursal);
+                        guardarSucursal = $"[{region.CodigoSucursal}]  {region.NombreSucursal}\tDirección: {region.SucursalDireccion}";
                     }
                 }
-
             }
-            string guardarSucursal = "";
-            foreach (var item in auxiliarDSucursal)
-            {
-                Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
-                guardarSucursal = item.Value;
-            }
+            //foreach (var item in auxiliarDSucursal)
+            //{
+            //    Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
+            //    guardarSucursal = item.Value;
+            //}
             return guardarSucursal;
         }
         //----------------------------------Muestra todos los datos de la recepción dependiendo de lo seleccionado---------------------------------
         public void MostrarNuevaRecepcion()
         {
-            Console.WriteLine("Datos de recepción");
-            Console.WriteLine("------------------");
+            Console.WriteLine("");
+            Console.WriteLine("Origen");
+            Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine($"Tipo de recepcion: {TipoRecepcion}");
             if (TipoRecepcion == "Retiro en puerta")
             {
-                Console.WriteLine($"Provincia: {NombreProvincia}");
-                Console.WriteLine($"Localidad: {NombreLocalidad}");
-                Console.WriteLine($"Dirección: {RetiroDireccion}\t Código Postal: {RetiroCodigoPostal}");
+                Console.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
+                //Console.WriteLine($"Localidad: {NombreLocalidad}");
+                Console.WriteLine($"Dirección: {RetiroDireccion}\t\tCódigo Postal: {RetiroCodigoPostal}");
             }
             if (TipoRecepcion == "Presentacion en sucursal")
             {
-                Console.WriteLine($"Provincia: {NombreProvincia}");
-                Console.WriteLine($"Localidad: {NombreLocalidad}");
+                Console.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
+                //Console.WriteLine($"Localidad: {NombreLocalidad}");
+                Console.WriteLine("");
                 Console.WriteLine($"Sucursal: {NombreSucursal}");
+                //Console.WriteLine($"Dirección: {SucursalDireccion}\t\t\tCódigo Postal: {SucursalCodigoPostal}");
             }
 
         }
         public void MostrarNuevaEntrega()
         {
+            Console.WriteLine("");
             Console.WriteLine("Datos de Entrega");
-            Console.WriteLine("----------------");
-            Console.WriteLine($"Destinatario: {NombreDestinatario}\t DNI: {NumeroDNIdestinatario}");
+            Console.WriteLine("-----------------------------------------------------------------------");
+            Console.WriteLine($"Destinatario: {NombreDestinatario}\t\t\tDNI: {NumeroDNIdestinatario}");
+            Console.WriteLine("");
             Console.WriteLine($"Tipo de recepcion: {TipoEntrega}");
             if (TipoEntrega == "Entrega en puerta")
             {
-                Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
-                Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
-                Console.WriteLine($"Dirección: {DireccionEntrega}\t Código Postal: {CodigoPostalEntrega}");
+                Console.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
+                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
+                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
+                Console.WriteLine($"Dirección: {DireccionEntrega}\t\tCódigo Postal: {CodigoPostalEntrega}");
             }
             if (TipoEntrega == "Entrega en sucursal")
             {
-                Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
-                Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
+                Console.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
+                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
+                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
+                Console.WriteLine("");
                 Console.WriteLine($"Sucursal: {NombreSucursalEntrega}");
+                //Console.WriteLine($"Dirección: {SucursalDireccionEntrega}\t\t\tCódigo Postal: {SucursalCodigoPostalEntrega}");
+            }
+        }
+
+        public void EscribirNuevaRecepcion(StreamWriter writer) 
+        {
+            writer.WriteLine("");
+            writer.WriteLine("Origen");
+            writer.WriteLine("-----------------------------------------------------------------------");
+            writer.WriteLine($"Tipo de recepcion: {TipoRecepcion}");
+            if (TipoRecepcion == "Retiro en puerta")
+            {
+                writer.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
+                //Console.WriteLine($"Localidad: {NombreLocalidad}");
+                writer.WriteLine($"Dirección: {RetiroDireccion}\t\t\tCódigo Postal: {RetiroCodigoPostal}");
+            }
+            if (TipoRecepcion == "Presentacion en sucursal")
+            {
+                writer.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
+                //Console.WriteLine($"Localidad: {NombreLocalidad}");
+                writer.WriteLine("");
+                writer.WriteLine($"Sucursal: {NombreSucursal}");
+                //writer.WriteLine($"Dirección: {SucursalDireccion}\t\t\tCódigo Postal: {SucursalCodigoPostal}");
+            }
+        }
+        
+        
+        
+        
+        public void EscribirNuevaEntrega(StreamWriter writer)
+        {
+            writer.WriteLine("");
+            writer.WriteLine("Datos de Entrega");
+            writer.WriteLine("-----------------------------------------------------------------------");
+            writer.WriteLine($"Destinatario: {NombreDestinatario}\t\t\tDNI: {NumeroDNIdestinatario}");
+            writer.WriteLine("");
+            writer.WriteLine($"Tipo de entrega: {TipoEntrega}");
+            if (TipoEntrega == "Entrega en puerta")
+            {
+                writer.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
+                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
+                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
+                writer.WriteLine($"Dirección: {DireccionEntrega}\t\t\tCódigo Postal: {CodigoPostalEntrega}");
+            }
+            if (TipoEntrega == "Entrega en sucursal")
+            {
+                writer.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
+                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
+                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
+                writer.WriteLine("");
+                writer.WriteLine($"Sucursal: {NombreSucursalEntrega}");
+                //writer.WriteLine($"Dirección: {SucursalDireccionEntrega}\t\t\tCódigo Postal: {SucursalCodigoPostalEntrega}");
             }
 
         }

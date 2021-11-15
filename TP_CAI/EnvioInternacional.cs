@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TP_CAI
 {
@@ -12,6 +13,7 @@ namespace TP_CAI
         public string PesoPaqueteInt { get; private set; }
         public string TiempoEnvioInt { get; private set; }
         public string NumOdeServicio { get; private set; }
+
         //------------------cambio las listas hechas por objetos
         Region NuevaSeleccionRetiro = new Region();
         RegionInternacional NuevaSeleccionEntregaInt = new RegionInternacional();
@@ -124,12 +126,24 @@ namespace TP_CAI
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Orden de servicio confirmada");
+                Console.ResetColor();
+                //---------------------------------------------------Imprimir comprobante------------------------------------------------------------
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("¿Desea imprimir el comprobante? [S/N]");
+                if (Console.ReadKey(true).Key == ConsoleKey.S)
+                {
+                    nuevoEnvioInternacional.ImprimirComprobante();
+                    System.Diagnostics.Process.Start($"{nuevoEnvioInternacional.NumOdeServicio}{DateTime.Today.Hour}{DateTime.Today.Minute}{DateTime.Today.Second}.txt");
+                }
                 Console.WriteLine("Gracias por utilizar nuestros servicios");
+
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Operación cancelada");
+                Console.ResetColor();
+                Console.ReadLine();
                 System.Environment.Exit(0);
             }
             Console.ResetColor();
@@ -139,13 +153,15 @@ namespace TP_CAI
         }
         public void MostrarResumenEnvioInternacional()
         {
-            Console.WriteLine("***********************");
-            Console.WriteLine($"Resumen de la operación N° {NumOdeServicio}");//agregamos número?
-            Console.WriteLine("***********************");
-            Console.WriteLine("Tipo de servicio: Envío Internacional");
+            Console.WriteLine("***********************************************************************");
+            Console.WriteLine($"Resumen de la operación N° {NumOdeServicio}\t\tFecha: {DateTime.Today.ToShortDateString()}");
+            Console.WriteLine("\n\n");
+            ClienteActivo.MostrarClienteActivo();
+            Console.WriteLine("Tipo de servicio: Envío Internacional\n");
             Console.WriteLine($"Tipo de paquete: {TipoPaqueteInt}");
-            Console.WriteLine($"Peso del paquete: {PesoPaqueteInt}");
-            Console.WriteLine($"Tiempo de envío: {TiempoEnvioInt}");
+            Console.WriteLine($"Peso: {PesoPaqueteInt}");
+            Console.WriteLine($"Tiempo de envío: {TiempoEnvioInt}\n");
+
             //------------------Cambio los foreach por la referencia a un solo objeto
             NuevaSeleccionRetiro.MostrarNuevaRecepcion();
             NuevaSeleccionEntregaInt.MostrarNuevaEntregaInternacional();
@@ -158,6 +174,30 @@ namespace TP_CAI
             //    seleccionEntrega.MostrarNuevaEntregaInternacional();
             //}
         }
-
+        public void ImprimirComprobante()
+        {
+            FileStream archivo = File.OpenWrite($"{NumOdeServicio}{DateTime.Today.Hour}{DateTime.Today.Minute}{DateTime.Today.Second}.txt");
+            using (var writer = new StreamWriter(archivo))
+            {
+                writer.WriteLine("***********************************************************************\n");
+                writer.WriteLine($"Comprobante de la operacion N° {NumOdeServicio}\t\tFecha: {DateTime.Today.ToShortDateString()}");
+                writer.WriteLine("\n\n");
+                ClienteActivo.EscribirClienteActivo(writer);
+                writer.WriteLine("Tipo de servicio: Envío Internacional\n");
+                writer.WriteLine($"Tipo de paquete: {TipoPaqueteInt}");
+                writer.WriteLine($"Peso: {PesoPaqueteInt}");
+                writer.WriteLine($"Tiempo de envío: {TiempoEnvioInt}\n");
+                NuevaSeleccionRetiro.EscribirNuevaRecepcion(writer);
+                NuevaSeleccionEntregaInt.EscribirNuevaEntregaInternacional(writer);
+                writer.WriteLine("");
+                writer.WriteLine($"Número de seguimiento: [{NumOdeServicio}]\n");
+                writer.WriteLine("[ ! ] Conservelo para consultar el estado del envío\n");
+                writer.WriteLine("***********************************************************************\n\n");
+                writer.WriteLine("[ ! ] Presione Ctrl+P para imprimir este comprobante");
+                writer.WriteLine("[ ! ] Presione Ctrl+Mayús+S para guardar este comprobante");
+                writer.Close();
+            }
+            archivo.Close();
+        }
     }
 }
