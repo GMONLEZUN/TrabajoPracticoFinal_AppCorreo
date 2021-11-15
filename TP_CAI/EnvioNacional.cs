@@ -11,9 +11,14 @@ namespace TP_CAI
         public string TipoPaquete { get; private set; }
         public string PesoPaquete { get; private set; }
         public string TiempoEnvio { get; private set; }
+        public string NumOdeServicio { get; private set; }
 
-        List<Region> ListaSeleccionRetiro = new List<Region>();
-        List<Region> ListaSeleccionEntrega = new List<Region>();
+        //------------------cambio las listas hechas por objetos
+        Region NuevaSeleccionRetiro = new Region();
+        Region NuevaSeleccionEntrega = new Region();
+        Cliente ClienteActivo = new Cliente();
+        //List<Region> ListaSeleccionRetiro = new List<Region>();
+        //List<Region> ListaSeleccionEntrega = new List<Region>();
 
         public static EnvioNacional Ingresar() 
         {
@@ -93,13 +98,28 @@ namespace TP_CAI
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Seleccione el tipo de recepción:");
             Console.ResetColor();
+
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
-            nuevoEnvioNacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
+            nuevoEnvioNacional.NuevaSeleccionRetiro = nuevaSeleccionRetiro;
+            //var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
+            //-----------------------------------no agrego elementos a la lista, no hace falta----------------
+            //nuevoEnvioNacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Seleccione el tipo de entrega:");
             Console.ResetColor();
+
             var nuevaSeleccionEntrega = Region.SeleccionEntrega();
-            nuevoEnvioNacional.ListaSeleccionEntrega.Add(nuevaSeleccionEntrega);
+            nuevoEnvioNacional.NuevaSeleccionEntrega = nuevaSeleccionEntrega;
+            //var nuevaSeleccionEntrega = Region.SeleccionEntrega();
+            //---------------------------no agrego elementos a la lista, no hace falta----------------
+            //nuevoEnvioNacional.ListaSeleccionEntrega.Add(nuevaSeleccionEntrega);
+
+            //------------------------Generamos el número de orden de servicio [seguimiento]-------------------------------------
+            Random r = new Random();
+            int NumRandom = r.Next(0, 9);
+            var clienteActivo = nuevoEnvioNacional.ClienteActivo.DevolverClienteActivo();
+            string numOrdenDeServicio = ($"{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}{clienteActivo}{NumRandom}");
+            nuevoEnvioNacional.NumOdeServicio = numOrdenDeServicio;
 
             nuevoEnvioNacional.MostrarResumenEnvioNacional();
             //----------------------------------------------CONFIRMACION----------------------------------------------------------------------------
@@ -115,6 +135,8 @@ namespace TP_CAI
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Operación cancelada");
+                Console.ResetColor();
+                Console.ReadLine();
                 System.Environment.Exit(0);
             }
             Console.ResetColor();
@@ -125,20 +147,24 @@ namespace TP_CAI
         public void MostrarResumenEnvioNacional()
          {
             Console.WriteLine("***********************");
-            Console.WriteLine("Resumen de la operación");//agregamos número?
+            Console.WriteLine($"Resumen de la operación N° {NumOdeServicio}");//agregamos número?
             Console.WriteLine("***********************");
             Console.WriteLine("Tipo de servicio: Envío Nacional");
             Console.WriteLine($"Tipo de paquete: {TipoPaquete}");
             Console.WriteLine($"Peso del paquete: {PesoPaquete}");
             Console.WriteLine($"Tiempo de envío: {TiempoEnvio}");
-            foreach (var seleccionRetiro in ListaSeleccionRetiro)
-            {
-                seleccionRetiro.MostrarNuevaRecepcion();
-            }
-            foreach (var seleccionEntrega in ListaSeleccionEntrega)
-            {
-                seleccionEntrega.MostrarNuevaEntrega();
-            }
+            
+            //------------------Cambio los foreach por la referencia a un solo objeto
+            NuevaSeleccionRetiro.MostrarNuevaRecepcion();
+            NuevaSeleccionEntrega.MostrarNuevaEntrega();
+            //foreach (var seleccionRetiro in ListaSeleccionRetiro)
+            //{
+            //    seleccionRetiro.MostrarNuevaRecepcion();
+            //}
+            //foreach (var seleccionEntrega in ListaSeleccionEntrega)
+            //{
+            //    seleccionEntrega.MostrarNuevaEntrega();
+            //}
         }
         
     }

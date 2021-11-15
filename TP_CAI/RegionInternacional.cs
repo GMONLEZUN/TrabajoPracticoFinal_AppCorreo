@@ -18,6 +18,8 @@ namespace TP_CAI
         public string TipoEntregaInt { get; private set; }
         public string DireccionEntregaInt { get; private set; }
         public int CodigoPostalEntregaInt { get; private set; }
+        public string NombreDestinatario { get; private set; }
+        public string NumeroDNIdestinatario { get; private set; }
 
         const string maestroPaises = "maestroPaises.txt";
 
@@ -88,6 +90,18 @@ namespace TP_CAI
                 nuevaSeleccionEntregaInt.DireccionEntregaInt = direccion;
                 nuevaSeleccionEntregaInt.CodigoPostalEntregaInt = CodPostal;
 
+                break;
+            }
+            while (true)
+            {
+                //-------------------------------------Pedimos datos del destinatario del envío-----------------------------------
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("Ingrese nombre y apellido del destinatario");
+                Console.ResetColor();
+                var nombreDestinatario = Console.ReadLine();
+                nuevaSeleccionEntregaInt.NombreDestinatario = nombreDestinatario;
+                var dniDestinatario = Validaciones.ValidarDNI("Ingrese el DNI del destinatario");
+                nuevaSeleccionEntregaInt.NumeroDNIdestinatario = dniDestinatario;
                 break;
             }
             return nuevaSeleccionEntregaInt;
@@ -190,6 +204,7 @@ namespace TP_CAI
         {
             Console.WriteLine("Datos de Entrega");
             Console.WriteLine("----------------");
+            Console.WriteLine($"Destinatario: {NombreDestinatario}\t DNI: {NumeroDNIdestinatario}");
             Console.WriteLine($"Tipo de recepcion: {TipoEntregaInt}");
             Console.WriteLine($"Provincia: {NombreEstadoEntregaInt}");
             Console.WriteLine($"Localidad: {NombreLocalidadEntregaInt}");

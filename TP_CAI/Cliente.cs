@@ -30,29 +30,38 @@ namespace TP_CAI
             NombreClAut = partes[5];
             
         }
-        public void LeerMaestroCliente(string numeroCliente)
+
+
+        public void LeerMaestroCliente(string numeroCliente, string dni)
         {
+
             if (File.Exists(maestroCliente))
             {
                 using (var reader = new StreamReader(maestroCliente))
                 {
                     var clEncontrado = false;
+                    var dniEncontrado = false;
+
                     while (!reader.EndOfStream)
                     {
                         var linea = reader.ReadLine();
-                        clEncontrado = false;
-                        if (linea.IndexOf(numeroCliente, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                        var unCliente = new Cliente(linea);
+
+                        clEncontrado = unCliente.NumeroCliente == numeroCliente;
+                        dniEncontrado = unCliente.dniClAut == dni;
+
+                        if (clEncontrado && dniEncontrado)
                         {
-                            var unCliente = new Cliente(linea);
                             clientes.Add(unCliente);
-                            clEncontrado = true;
                             break;
+
                         }
+
                     }
-                    if (clEncontrado == false)
+                    if (clEncontrado == false || dniEncontrado == false)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("El cliente ingresado no se encuentra en nuestra base de datos");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("El cliente o dni ingresado no se encuentra en nuestra registrado en nuestra base de datos");
                         Console.ResetColor();
                         Console.ReadKey();
                         System.Environment.Exit(0);
@@ -60,7 +69,6 @@ namespace TP_CAI
                 }
             }
         }
-
 
         public void MostrarClientesEncontrados()
         {
@@ -77,6 +85,15 @@ namespace TP_CAI
                 Console.WriteLine($"DNI {cliente.dniClAut}");
                 Console.WriteLine("----------------------------");
             }
+        }
+        public string DevolverClienteActivo() 
+        {
+            string clienteActivo = "";
+            foreach (var cliente in clientes)
+            {
+                clienteActivo = cliente.NumeroCliente;
+            }
+            return clienteActivo;
         }
     }
 }

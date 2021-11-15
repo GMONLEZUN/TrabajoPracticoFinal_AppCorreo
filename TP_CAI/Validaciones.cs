@@ -54,7 +54,49 @@ namespace TP_CAI
 
             return numeroCliente;
         }
+        static public string ValidarDNI(string mensaje)
+        {
+            int dniNumerico;
+            string dni;
 
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(mensaje);
+                Console.ResetColor();
+                dni = Console.ReadLine();
+
+                bool verificarQueSeaNumero = int.TryParse(dni, out dniNumerico);
+
+                if (dni.Length > 8)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de dni no puede poseer más de 8 dígitos");
+                    Console.ResetColor();
+                    continue;
+                }
+                if (dni.Length < 8)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de dni no puede poseer menos de 8 dígitos");
+                    Console.ResetColor();
+                    continue;
+                }
+                //validar que sea solo número
+                if (!verificarQueSeaNumero)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Los carácteres ingresados NO corresponden a carácteres numéricos.");
+                    Console.ResetColor();
+                    Console.WriteLine("----------------------------------------");
+
+                    continue;
+                }
+                break;
+            } while (true);
+
+            return dni;
+        }
         static public int ValidarOpcion(string mensaje, string mensajeOpciones, int OpcMin, int OpcMax)
         {
             int opcion;

@@ -11,9 +11,13 @@ namespace TP_CAI
         public string TipoPaqueteInt { get; private set; }
         public string PesoPaqueteInt { get; private set; }
         public string TiempoEnvioInt { get; private set; }
-
-        List<Region> ListaSeleccionRetiro = new List<Region>();
-        List<RegionInternacional> ListaSeleccionEntregaInt = new List<RegionInternacional>();
+        public string NumOdeServicio { get; private set; }
+        //------------------cambio las listas hechas por objetos
+        Region NuevaSeleccionRetiro = new Region();
+        RegionInternacional NuevaSeleccionEntregaInt = new RegionInternacional();
+        Cliente ClienteActivo = new Cliente();
+        //List<Region> NuevaaSeleccionRetiro = new List<Region>();
+        //List<RegionInternacional> ListaSeleccionEntregaInt = new List<RegionInternacional>();
 
         public static EnvioInternacional Ingresar()
         {
@@ -91,13 +95,26 @@ namespace TP_CAI
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Seleccione el tipo de recepción:");
             Console.ResetColor();
+
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
-            nuevoEnvioInternacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
+            nuevoEnvioInternacional.NuevaSeleccionRetiro = nuevaSeleccionRetiro;
+            //var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
+            //nuevoEnvioInternacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Entrega");
             Console.ResetColor();
+
             var nuevaSeleccionEntregaInt = RegionInternacional.SeleccionEntregaInt();
-            nuevoEnvioInternacional.ListaSeleccionEntregaInt.Add(nuevaSeleccionEntregaInt);
+            nuevoEnvioInternacional.NuevaSeleccionEntregaInt = nuevaSeleccionEntregaInt;
+            //var nuevaSeleccionEntregaInt = RegionInternacional.SeleccionEntregaInt();
+            //nuevoEnvioInternacional.ListaSeleccionEntregaInt.Add(nuevaSeleccionEntregaInt);
+
+            //------------------------Generamos el número de orden de servicio [seguimiento]-------------------------------------
+            Random r = new Random();
+            int NumRandom = r.Next(0, 9);
+            var clienteActivo = nuevoEnvioInternacional.ClienteActivo.DevolverClienteActivo();
+            string numOrdenDeServicio = ($"{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}{clienteActivo}{NumRandom}");
+            nuevoEnvioInternacional.NumOdeServicio = numOrdenDeServicio;
 
             nuevoEnvioInternacional.MostrarResumenEnvioInternacional();
             //----------------------------------------------CONFIRMACION----------------------------------------------------------------------------
@@ -123,20 +140,23 @@ namespace TP_CAI
         public void MostrarResumenEnvioInternacional()
         {
             Console.WriteLine("***********************");
-            Console.WriteLine("Resumen de la operación");//agregamos número?
+            Console.WriteLine($"Resumen de la operación N° {NumOdeServicio}");//agregamos número?
             Console.WriteLine("***********************");
             Console.WriteLine("Tipo de servicio: Envío Internacional");
             Console.WriteLine($"Tipo de paquete: {TipoPaqueteInt}");
             Console.WriteLine($"Peso del paquete: {PesoPaqueteInt}");
             Console.WriteLine($"Tiempo de envío: {TiempoEnvioInt}");
-            foreach (var seleccionRetiro in ListaSeleccionRetiro)
-            {
-                seleccionRetiro.MostrarNuevaRecepcion();
-            }
-            foreach (var seleccionEntrega in ListaSeleccionEntregaInt)
-            {
-                seleccionEntrega.MostrarNuevaEntregaInternacional();
-            }
+            //------------------Cambio los foreach por la referencia a un solo objeto
+            NuevaSeleccionRetiro.MostrarNuevaRecepcion();
+            NuevaSeleccionEntregaInt.MostrarNuevaEntregaInternacional();
+            //foreach (var seleccionRetiro in ListaSeleccionRetiro)
+            //{
+            //    seleccionRetiro.MostrarNuevaRecepcion();
+            //}
+            //foreach (var seleccionEntrega in ListaSeleccionEntregaInt)
+            //{
+            //    seleccionEntrega.MostrarNuevaEntregaInternacional();
+            //}
         }
 
     }

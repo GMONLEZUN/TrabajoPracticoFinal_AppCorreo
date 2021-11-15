@@ -10,14 +10,15 @@ namespace TP_CAI
     {
         static void Main(string[] args)
         {
-            string numeroCliente = Validaciones.ValidarCliente("Ingrese el número de cliente");
+            string numeroCliente = Validaciones.ValidarCliente("Ingrese el número de cliente.\n Recuerde que el mismo contiene 6 dígitos");
+            string dniAutorizado = Validaciones.ValidarDNI("Ingrese su número de DNI");
             Cliente clienteActivo = new Cliente();
 
             //Console.WriteLine("Ingrese el número de documento");
             //Validar
             //Validar combinación cliente + DNI
 
-            clienteActivo.LeerMaestroCliente(numeroCliente);
+            clienteActivo.LeerMaestroCliente(numeroCliente, dniAutorizado);
             clienteActivo.MostrarClientesEncontrados();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Presione Enter para continuar");

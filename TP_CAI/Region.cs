@@ -36,6 +36,8 @@ namespace TP_CAI
         public string TipoEntrega { get; private set; }
         public string DireccionEntrega { get; private set; }
         public int CodigoPostalEntrega { get; private set; }
+        public string NombreDestinatario { get; private set; }
+        public string NumeroDNIdestinatario { get; private set; }
 
         const string maestroRegiones = "MaestroRegiones.txt";
 
@@ -222,6 +224,18 @@ namespace TP_CAI
                     sucSelecc = nuevaSeleccionEntrega.DevuelveSeleccionSucursal(codSucursal);
                     nuevaSeleccionEntrega.NombreSucursalEntrega = sucSelecc;
                 }
+                break;
+            }
+            while (true)
+            {
+                //-------------------------------------Pedimos datos del destinatario del envío-----------------------------------
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("Ingrese nombre y apellido del destinatario");
+                Console.ResetColor();
+                var nombreDestinatario = Console.ReadLine();
+                nuevaSeleccionEntrega.NombreDestinatario = nombreDestinatario;
+                var dniDestinatario = Validaciones.ValidarDNI("Ingrese el DNI del destinatario");
+                nuevaSeleccionEntrega.NumeroDNIdestinatario = dniDestinatario;
                 break;
             }
             return nuevaSeleccionEntrega;
@@ -495,6 +509,7 @@ namespace TP_CAI
         {
             Console.WriteLine("Datos de Entrega");
             Console.WriteLine("----------------");
+            Console.WriteLine($"Destinatario: {NombreDestinatario}\t DNI: {NumeroDNIdestinatario}");
             Console.WriteLine($"Tipo de recepcion: {TipoEntrega}");
             if (TipoEntrega == "Entrega en puerta")
             {
