@@ -10,7 +10,7 @@ namespace TP_CAI
     {
         static void Main(string[] args)
         {
-            string numeroCliente = Validaciones.ValidarCliente("Ingrese el número de cliente.\n Recuerde que el mismo contiene 6 dígitos");
+            string numeroCliente = Validaciones.ValidarCliente("Ingrese el número de cliente.\nRecuerde que el mismo contiene 6 dígitos");
             string dniAutorizado = Validaciones.ValidarDNI("Ingrese su número de DNI");
             Cliente clienteActivo = new Cliente();
 

@@ -88,6 +88,22 @@ namespace TP_CAI
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
 
                     nuevaSeleccionRecepcion.LeerMaestroRegiones();
+                    if (opcionRegion == 10)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región Pampeana";
+                    }
+                    if (opcionRegion == 20)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región NOA";
+                    }
+                    if (opcionRegion == 30)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región NEA";
+                    }
+                    if (opcionRegion == 40)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región Patagónica";
+                    }
                     //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará el retiro del envío");
@@ -126,6 +142,23 @@ namespace TP_CAI
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
 
                     nuevaSeleccionRecepcion.LeerMaestroRegiones();
+
+                    if (opcionRegion == 10)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región Pampeana";
+                    }
+                    if (opcionRegion == 20)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región NOA";
+                    }
+                    if (opcionRegion == 30)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región NEA";
+                    }
+                    if (opcionRegion == 40)
+                    {
+                        nuevaSeleccionRecepcion.NombreRegion = "Región Patagónica";
+                    }
                     //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la presentación del envío");
@@ -166,13 +199,29 @@ namespace TP_CAI
                 string locSelecc = "";
                 string sucSelecc = "";
                 //----------------------------------Pedimos el tipo de entrega del envío---------------------------------
-                int opcionSelec = Validaciones.ValidarOpcion("-", "1-Retiro en puerta\n2-Presentación en sucursal", 1, 2);
+                int opcionSelec = Validaciones.ValidarOpcion("-", "1-Entrega en puerta\n2-Entrega en sucursal", 1, 2);
                 if (opcionSelec == 1)
                 {
                     nuevaSeleccionEntrega.TipoEntrega = "Entrega en puerta";
                     //----------------------------------Pedimos la región de entrega del envío---------------------------------
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
+                    if (opcionRegion == 10)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región Pampeana";
+                    }
+                    if (opcionRegion == 20)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región NOA";
+                    }
+                    if (opcionRegion == 30)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región NEA";
+                    }
+                    if (opcionRegion == 40)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región Patagónica";
+                    }
                     //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la entrega del envío");
@@ -208,6 +257,22 @@ namespace TP_CAI
                     //----------------------------------Pedimos la región de entrega del envío---------------------------------
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
+                    if (opcionRegion == 10)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región Pampeana";
+                    }
+                    if (opcionRegion == 20)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región NOA";
+                    }
+                    if (opcionRegion == 30)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región NEA";
+                    }
+                    if (opcionRegion == 40)
+                    {
+                        nuevaSeleccionEntrega.NombreRegionEntrega = "Región Patagónica";
+                    }
                     //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la entrega del envío");
@@ -563,10 +628,7 @@ namespace TP_CAI
                 //writer.WriteLine($"Dirección: {SucursalDireccion}\t\t\tCódigo Postal: {SucursalCodigoPostal}");
             }
         }
-        
-        
-        
-        
+
         public void EscribirNuevaEntrega(StreamWriter writer)
         {
             writer.WriteLine("");
@@ -591,7 +653,6 @@ namespace TP_CAI
                 writer.WriteLine($"Sucursal: {NombreSucursalEntrega}");
                 //writer.WriteLine($"Dirección: {SucursalDireccionEntrega}\t\t\tCódigo Postal: {SucursalCodigoPostalEntrega}");
             }
-
         }
     }
 }

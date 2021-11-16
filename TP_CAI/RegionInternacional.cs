@@ -49,7 +49,7 @@ namespace TP_CAI
             {
 
                 string paisSelecc = "";
-
+                string regionSelecc = "";
                 //----------------------------------Pedimos el tipo de entrega del envío---------------------------------
 
                 nuevaSeleccionEntregaInt.TipoEntregaInt = "Entrega en puerta";
@@ -63,6 +63,7 @@ namespace TP_CAI
                 int codPais = nuevaSeleccionEntregaInt.VerPaises();
                 paisSelecc = nuevaSeleccionEntregaInt.DevuelveSeleccionPais(codPais);
                 nuevaSeleccionEntregaInt.NombrePais = paisSelecc;
+                regionSelecc = nuevaSeleccionEntregaInt.DevuelveSeleccionRegion(codPais);
 
                 //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -172,7 +173,7 @@ namespace TP_CAI
 
 
         
-        //----------------------------------Dado un código de provincia nos devuelve la provincia elegida---------------------------------
+        //----------------------------------Dado un código de país nos devuelve el país elegido---------------------------------
         public string DevuelveSeleccionPais(int codigoPais)
         {
             Dictionary<int, string> auxiliarDPais = new Dictionary<int, string>();
@@ -197,7 +198,33 @@ namespace TP_CAI
             }
             return guardarPais;
         }
-       
+        //----------------------------------Dado un código de país nos devuelve la región--------------------------------------
+        public string DevuelveSeleccionRegion(int codigoPais)
+        {
+            Dictionary<int, string> auxiliarDPais = new Dictionary<int, string>();
+            bool encontrado = false;
+            foreach (var pais in paises)
+            {
+                if (pais.CodigoPais == codigoPais)
+                {
+                    encontrado = auxiliarDPais.ContainsKey(pais.CodigoPais);
+                    if (!encontrado)
+                    {
+                        auxiliarDPais.Add(pais.CodigoPais, pais.NombreRegionEntregaInt);
+                    }
+                }
+
+            }
+            string guardarRegion = "";
+            foreach (var item in auxiliarDPais)
+            {
+                Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
+                guardarRegion = item.Value;
+            }
+            return guardarRegion;
+
+        }
+
         //----------------------------------Muestra todos los datos de la recepción dependiendo de lo seleccionado---------------------------------
 
         public void MostrarNuevaEntregaInternacional()

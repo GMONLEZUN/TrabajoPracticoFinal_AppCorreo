@@ -14,6 +14,7 @@ namespace TP_CAI
         public string PesoPaquete { get; private set; }
         public string TiempoEnvio { get; private set; }
         public string NumOdeServicio { get; private set; }
+        public decimal TarifaServicioNacional { get; private set; }
 
         //------------------cambio las listas hechas por objetos
         Region NuevaSeleccionRetiro = new Region();
@@ -25,7 +26,7 @@ namespace TP_CAI
         public static EnvioNacional Ingresar() 
         {
             var nuevoEnvioNacional = new EnvioNacional();
-
+            decimal tarifa = 400M;
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Nueva Orden de Servicio - Envío Nacional");
             Console.ResetColor();
@@ -55,16 +56,19 @@ namespace TP_CAI
                     case 1:
                         {
                             pesoEncomienda = "Bultos hasta 10Kg.";
+                            tarifa = tarifa * 2.75M;
                             break;
                         }
                     case 2:
                         {
                             pesoEncomienda = "Bultos hasta 20Kg.";
+                            tarifa = tarifa * 4.25M;
                             break;
                         }
                     case 3:
                         {
                             pesoEncomienda = "Bultos hasta 30Kg.";
+                            tarifa = tarifa * 5.75M;
                             break;
                         }
                     default:
@@ -103,18 +107,62 @@ namespace TP_CAI
 
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
             nuevoEnvioNacional.NuevaSeleccionRetiro = nuevaSeleccionRetiro;
+            
+
             //var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
             //-----------------------------------no agrego elementos a la lista, no hace falta----------------
             //nuevoEnvioNacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Seleccione el tipo de entrega:");
             Console.ResetColor();
+            
 
             var nuevaSeleccionEntrega = Region.SeleccionEntrega();
             nuevoEnvioNacional.NuevaSeleccionEntrega = nuevaSeleccionEntrega;
+            //-------------------------------------------------------------------------TARIFA---------------------------------------------------------
+            if (nuevoEnvioNacional.NuevaSeleccionRetiro.TipoRecepcion == "Retiro en puerta")
+            {
+                tarifa += 160;
+            }
+            if (nuevoEnvioNacional.NuevaSeleccionRetiro.NombreRegion != nuevoEnvioNacional.NuevaSeleccionEntrega.NombreRegionEntrega)
+            {
+                tarifa *= 2M;
+            }
+            else
+            {
+                if (nuevoEnvioNacional.NuevaSeleccionRetiro.NombreProvincia != nuevoEnvioNacional.NuevaSeleccionEntrega.NombreProvinciaEntrega)
+                {
+                    tarifa *= 1.625M;
+                }
+                else
+                {
+                    if (nuevoEnvioNacional.NuevaSeleccionRetiro.NombreLocalidad != nuevoEnvioNacional.NuevaSeleccionEntrega.NombreLocalidadEntrega)
+                    {
+                        tarifa *= 1.25M;
+                    }
+                }
+            }
+            if (nuevoEnvioNacional.NuevaSeleccionEntrega.TipoEntrega == "Entrega en puerta")
+            {
+                tarifa += 200;
+            }
+
             //var nuevaSeleccionEntrega = Region.SeleccionEntrega();
             //---------------------------no agrego elementos a la lista, no hace falta----------------
             //nuevoEnvioNacional.ListaSeleccionEntrega.Add(nuevaSeleccionEntrega);
+
+            if (nuevoEnvioNacional.TiempoEnvio == "Envío urgente")
+            {
+                if (tarifa * 1.20M > 1600)
+                {
+                    tarifa += 1600;
+                }
+                else
+                {
+                    tarifa *= 2.20M ;
+                }
+            }
+            nuevoEnvioNacional.TarifaServicioNacional = tarifa;
 
             //------------------------Generamos el número de orden de servicio [seguimiento]-------------------------------------
             Random r = new Random();
@@ -170,6 +218,10 @@ namespace TP_CAI
             //------------------Cambio los foreach por la referencia a un solo objeto
             NuevaSeleccionRetiro.MostrarNuevaRecepcion();
             NuevaSeleccionEntrega.MostrarNuevaEntrega();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioNacional}");
+            Console.ResetColor();
+            Console.WriteLine("");
             //foreach (var seleccionRetiro in ListaSeleccionRetiro)
             //{
             //    seleccionRetiro.MostrarNuevaRecepcion();
@@ -198,6 +250,7 @@ namespace TP_CAI
                 writer.WriteLine("");
                 writer.WriteLine($"Número de seguimiento: [{NumOdeServicio}]\n");
                 writer.WriteLine("[ ! ] Conservelo para consultar el estado del envío\n");
+                writer.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioNacional}");
                 writer.WriteLine("***********************************************************************\n\n");
                 writer.WriteLine("[ ! ] Presione Ctrl+P para imprimir este comprobante");
                 writer.WriteLine("[ ! ] Presione Ctrl+Mayús+S para guardar este comprobante");
