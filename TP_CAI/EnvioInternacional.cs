@@ -13,6 +13,7 @@ namespace TP_CAI
         public string PesoPaqueteInt { get; private set; }
         public string TiempoEnvioInt { get; private set; }
         public string NumOdeServicio { get; private set; }
+        public decimal TarifaServicioInternacional { get; private set; }
 
         //------------------cambio las listas hechas por objetos
         Region NuevaSeleccionRetiro = new Region();
@@ -24,6 +25,7 @@ namespace TP_CAI
         public static EnvioInternacional Ingresar()
         {
             var nuevoEnvioInternacional = new EnvioInternacional();
+            decimal tarifa = 400;
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Nueva Orden de Servicio - Envío Internacional");
@@ -53,16 +55,19 @@ namespace TP_CAI
                     case 1:
                         {
                             pesoEncomienda = "Bultos hasta 10Kg.";
+                            tarifa = tarifa * 2.75M;
                             break;
                         }
                     case 2:
                         {
                             pesoEncomienda = "Bultos hasta 20Kg.";
+                            tarifa = tarifa * 4.25M;
                             break;
                         }
                     case 3:
                         {
                             pesoEncomienda = "Bultos hasta 30Kg.";
+                            tarifa = tarifa * 5.75M;
                             break;
                         }
                     default:
@@ -100,6 +105,7 @@ namespace TP_CAI
 
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
             nuevoEnvioInternacional.NuevaSeleccionRetiro = nuevaSeleccionRetiro;
+
             //var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
             //nuevoEnvioInternacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -110,7 +116,57 @@ namespace TP_CAI
             nuevoEnvioInternacional.NuevaSeleccionEntregaInt = nuevaSeleccionEntregaInt;
             //var nuevaSeleccionEntregaInt = RegionInternacional.SeleccionEntregaInt();
             //nuevoEnvioInternacional.ListaSeleccionEntregaInt.Add(nuevaSeleccionEntregaInt);
+            //-------------------------------------------------------------------------TARIFA PRIMERO A CABA---------------------------------------------------------
+            if (nuevoEnvioInternacional.NuevaSeleccionRetiro.TipoRecepcion == "Retiro en puerta")
+            {
+                tarifa += 160;
+            }
+            if (nuevoEnvioInternacional.NuevaSeleccionRetiro.NombreRegion != "Región Pampeana")
+            {
+                tarifa *= 2M;
+            }
+            else
+            {
+                if (nuevoEnvioInternacional.NuevaSeleccionRetiro.NombreProvincia != "Capital Federal")
+                {
+                    tarifa *= 1.625M;
+                }
+            }
+            //-------------------------------------------------------------------------TARIFA AL PAIS DESTINO---------------------------------------------------------
+            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "Países Limitrofes")
+            {
+                tarifa *= 1.25M;
+            }
+            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "Lationamérica (no limítrofes)")
+            {
+                tarifa *= 1.65M;
+            }
+            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "América del Norte")
+            {
+                tarifa *= 2M;
+            }
+            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "Europa")
+            {
+                tarifa *= 2.5M;
+            }
+            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "Asia")
+            {
+                tarifa *= 2.8M;
+            }
 
+            //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+            if (nuevoEnvioInternacional.TiempoEnvioInt == "Envío urgente")
+            {
+                if (tarifa * 1.20M > 5500)
+                {
+                    tarifa += 5500; 
+                }
+                else
+                {
+                    tarifa *= 2.20M;
+                }
+            }
+            nuevoEnvioInternacional.TarifaServicioInternacional = tarifa;
             //------------------------Generamos el número de orden de servicio [seguimiento]-------------------------------------
             Random r = new Random();
             int NumRandom = r.Next(0, 9);
@@ -165,6 +221,10 @@ namespace TP_CAI
             //------------------Cambio los foreach por la referencia a un solo objeto
             NuevaSeleccionRetiro.MostrarNuevaRecepcion();
             NuevaSeleccionEntregaInt.MostrarNuevaEntregaInternacional();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioInternacional}");
+            Console.ResetColor();
+            Console.WriteLine("");
             //foreach (var seleccionRetiro in ListaSeleccionRetiro)
             //{
             //    seleccionRetiro.MostrarNuevaRecepcion();
@@ -192,6 +252,7 @@ namespace TP_CAI
                 writer.WriteLine("");
                 writer.WriteLine($"Número de seguimiento: [{NumOdeServicio}]\n");
                 writer.WriteLine("[ ! ] Conservelo para consultar el estado del envío\n");
+                writer.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioInternacional}");
                 writer.WriteLine("***********************************************************************\n\n");
                 writer.WriteLine("[ ! ] Presione Ctrl+P para imprimir este comprobante");
                 writer.WriteLine("[ ! ] Presione Ctrl+Mayús+S para guardar este comprobante");

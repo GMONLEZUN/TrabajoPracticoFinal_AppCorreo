@@ -54,7 +54,6 @@ namespace TP_CAI
 
                 nuevaSeleccionEntregaInt.TipoEntregaInt = "Entrega en puerta";
 
-                //VER de asignar REGION*****************
                 //----------------------------------Pedimos el país de retiro del envío---------------------------------
                 nuevaSeleccionEntregaInt.LeerMaestroPaises();
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -64,6 +63,7 @@ namespace TP_CAI
                 paisSelecc = nuevaSeleccionEntregaInt.DevuelveSeleccionPais(codPais);
                 nuevaSeleccionEntregaInt.NombrePais = paisSelecc;
                 regionSelecc = nuevaSeleccionEntregaInt.DevuelveSeleccionRegion(codPais);
+                nuevaSeleccionEntregaInt.NombreRegionEntregaInt = regionSelecc;
 
                 //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
