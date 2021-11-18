@@ -62,6 +62,7 @@ namespace TP_CAI
             SucursalCodigoPostal = datos[9];
             TitularSucursal = datos[10];
         }
+
         public Region()
         {
 
@@ -72,22 +73,23 @@ namespace TP_CAI
         {
             var nuevaSeleccionRecepcion = new Region();
 
-
             while (true)
             {
-
                 string provSelecc = "";
                 string locSelecc = "";
                 string sucSelecc = "";
+
                 //----------------------------------Pedimos el tipo de retiro del envío---------------------------------
                 int opcionSelec = Validaciones.ValidarOpcion("-", "1-Retiro en puerta\n2-Presentación en sucursal", 1, 2);
                 if (opcionSelec == 1)
                 {
                     nuevaSeleccionRecepcion.TipoRecepcion = "Retiro en puerta";
+
                     //----------------------------------Pedimos la región de retiro del envío---------------------------------
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
 
                     nuevaSeleccionRecepcion.LeerMaestroRegiones();
+
                     if (opcionRegion == 10)
                     {
                         nuevaSeleccionRecepcion.NombreRegion = "Región Pampeana";
@@ -104,40 +106,49 @@ namespace TP_CAI
                     {
                         nuevaSeleccionRecepcion.NombreRegion = "Región Patagónica";
                     }
+                    nuevaSeleccionRecepcion.CodigoRegion = opcionRegion;
+
                     //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará el retiro del envío");
                     Console.ResetColor();
                     
-                    //nuevaSeleccionRecepcion.VerProvinciaPorRegion(opcionRegion);
                     int codProvincia = nuevaSeleccionRecepcion.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionRecepcion.NombreProvincia = provSelecc;
+                    nuevaSeleccionRecepcion.CodigoProvincia = codProvincia;
 
                     //----------------------------------Pedimos la localidad de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará el retiro del envío");
                     Console.ResetColor();
+
                     int codLocalidad = nuevaSeleccionRecepcion.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionRecepcion.NombreLocalidad = locSelecc;
+                    nuevaSeleccionRecepcion.CodigoLocalidad = codLocalidad;
+
                     //----------------------------------Pedimos la dirección exacta de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Ingrese la dirección exacta donde se realizara el retiro del envío");
                     Console.ResetColor();
+
                     var direccion = Console.ReadLine();
+
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Ingrese el código postal de la dirección ingresada");
                     Console.ResetColor();
+
                     var ingresoCodPostal = Console.ReadLine();
+
                     bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
                     nuevaSeleccionRecepcion.RetiroDireccion = direccion;
                     nuevaSeleccionRecepcion.RetiroCodigoPostal = CodPostal;
-
                 }
                 if (opcionSelec == 2)
                 {
                     nuevaSeleccionRecepcion.TipoRecepcion = "Presentacion en sucursal";
+
                     //----------------------------------Pedimos la región de retiro del envío---------------------------------
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
 
@@ -159,53 +170,68 @@ namespace TP_CAI
                     {
                         nuevaSeleccionRecepcion.NombreRegion = "Región Patagónica";
                     }
+                    nuevaSeleccionRecepcion.CodigoRegion = opcionRegion;
+
                     //----------------------------------Pedimos la provincia de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la presentación del envío");
                     Console.ResetColor();
+
                     int codProvincia = nuevaSeleccionRecepcion.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionRecepcion.NombreProvincia = provSelecc;
+                    nuevaSeleccionRecepcion.CodigoProvincia = codProvincia;
+
                     //----------------------------------Pedimos la localidad de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará la presentación del envío");
                     Console.ResetColor();
+
                     int codLocalidad = nuevaSeleccionRecepcion.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionRecepcion.NombreLocalidad = locSelecc;
+                    nuevaSeleccionRecepcion.CodigoLocalidad = codLocalidad;
+
                     //----------------------------------Pedimos la sucursal de retiro del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la sucursal donde se realizará la presentación del envío");
                     Console.ResetColor();
+
                     int codSucursal = nuevaSeleccionRecepcion.VerSucursalPorLocalidad(codLocalidad);
                     sucSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionSucursal(codSucursal);
                     nuevaSeleccionRecepcion.NombreSucursal = sucSelecc;
+                    nuevaSeleccionRecepcion.CodigoSucursal = codSucursal;
+                    string sucDirSelecc = nuevaSeleccionRecepcion.DevuelveSeleccionSucursalDireccion(codSucursal);
+                    nuevaSeleccionRecepcion.SucursalDireccion = sucDirSelecc;
                 }
                 break;
             }
 
             return nuevaSeleccionRecepcion;
         }
+
+
         //----------------------------------------ENTREGA-----------------------------------------------------------------------------------------------------------------
         public static Region SeleccionEntrega()
         {
             var nuevaSeleccionEntrega = new Region();
 
-
             while (true)
             {
-
                 string provSelecc = "";
                 string locSelecc = "";
                 string sucSelecc = "";
+
                 //----------------------------------Pedimos el tipo de entrega del envío---------------------------------
                 int opcionSelec = Validaciones.ValidarOpcion("-", "1-Entrega en puerta\n2-Entrega en sucursal", 1, 2);
                 if (opcionSelec == 1)
                 {
                     nuevaSeleccionEntrega.TipoEntrega = "Entrega en puerta";
+
                     //----------------------------------Pedimos la región de entrega del envío---------------------------------
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
+
                     if (opcionRegion == 10)
                     {
                         nuevaSeleccionEntrega.NombreRegionEntrega = "Región Pampeana";
@@ -222,41 +248,53 @@ namespace TP_CAI
                     {
                         nuevaSeleccionEntrega.NombreRegionEntrega = "Región Patagónica";
                     }
+                    nuevaSeleccionEntrega.CodigoRegionEntrega = opcionRegion;
+
                     //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la entrega del envío");
                     Console.ResetColor();
+
                     int codProvincia = nuevaSeleccionEntrega.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionEntrega.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionEntrega.NombreProvinciaEntrega = provSelecc;
+                    nuevaSeleccionEntrega.CodigoProvinciaEntrega = codProvincia;
 
                     //----------------------------------Pedimos la localidad de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará la entrega del envío");
                     Console.ResetColor();
+
                     int codLocalidad = nuevaSeleccionEntrega.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionEntrega.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionEntrega.NombreLocalidadEntrega = locSelecc;
+                    nuevaSeleccionEntrega.CodigoLocalidadEntrega = codLocalidad;
+
                     //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Ingrese la dirección exacta donde se realizara la entrega del envío");
                     Console.ResetColor();
+
                     var direccion = Console.ReadLine();
+
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Ingrese el código postal de la dirección ingresada");
                     Console.ResetColor();
+
                     var ingresoCodPostal = Console.ReadLine();
                     bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
                     nuevaSeleccionEntrega.DireccionEntrega = direccion;
                     nuevaSeleccionEntrega.CodigoPostalEntrega = CodPostal;
-
                 }
                 if (opcionSelec == 2)
                 {
                     nuevaSeleccionEntrega.TipoEntrega = "Entrega en sucursal";
+
                     //----------------------------------Pedimos la región de entrega del envío---------------------------------
                     int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
+
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
+
                     if (opcionRegion == 10)
                     {
                         nuevaSeleccionEntrega.NombreRegionEntrega = "Región Pampeana";
@@ -273,36 +311,50 @@ namespace TP_CAI
                     {
                         nuevaSeleccionEntrega.NombreRegionEntrega = "Región Patagónica";
                     }
+                    nuevaSeleccionEntrega.CodigoRegionEntrega = opcionRegion;
+
                     //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la provincia donde se realizará la entrega del envío");
                     Console.ResetColor();
+
                     int codProvincia = nuevaSeleccionEntrega.VerProvinciaPorRegion(opcionRegion);
                     provSelecc = nuevaSeleccionEntrega.DevuelveSeleccionProvincia(codProvincia);
                     nuevaSeleccionEntrega.NombreProvinciaEntrega = provSelecc;
+                    nuevaSeleccionEntrega.CodigoProvinciaEntrega = codProvincia;
+
                     //----------------------------------Pedimos la localidad de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la localidad donde se realizará la entrega del envío");
                     Console.ResetColor();
+
                     int codLocalidad = nuevaSeleccionEntrega.VerLocalidadPorProvincia(codProvincia);
                     locSelecc = nuevaSeleccionEntrega.DevuelveSeleccionLocalidad(codLocalidad);
                     nuevaSeleccionEntrega.NombreLocalidadEntrega = locSelecc;
+                    nuevaSeleccionEntrega.CodigoLocalidadEntrega = codLocalidad;
+
                     //----------------------------------Pedimos la sucursal de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Seleccione la sucursal donde se realizará la entrega del envío");
                     Console.ResetColor();
+
                     int codSucursal = nuevaSeleccionEntrega.VerSucursalPorLocalidad(codLocalidad);
                     sucSelecc = nuevaSeleccionEntrega.DevuelveSeleccionSucursal(codSucursal);
                     nuevaSeleccionEntrega.NombreSucursalEntrega = sucSelecc;
+                    nuevaSeleccionEntrega.CodigoSucursalEntrega = codSucursal;
+                    string sucDirSelecc = nuevaSeleccionEntrega.DevuelveSeleccionSucursalDireccion(codSucursal);
+                    nuevaSeleccionEntrega.SucursalDireccionEntrega = sucDirSelecc;
                 }
                 break;
             }
+
             while (true)
             {
                 //-------------------------------------Pedimos datos del destinatario del envío-----------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Ingrese nombre y apellido del destinatario");
                 Console.ResetColor();
+
                 var nombreDestinatario = Console.ReadLine();
                 nuevaSeleccionEntrega.NombreDestinatario = nombreDestinatario;
                 var dniDestinatario = Validaciones.ValidarDNI("Ingrese el DNI del destinatario");
@@ -391,7 +443,6 @@ namespace TP_CAI
             bool encontrado = false;
             foreach (var region in regiones)
             {
-
                 if (region.CodigoProvincia == codigoProvincia)
                 {
                     encontrado = auxiliarProvincia.ContainsKey(region.CodigoLocalidad);
@@ -432,6 +483,8 @@ namespace TP_CAI
             } while (true);
             return opcion;
         }
+
+
         //----------------------------------Dado un código de localidad nos devuelve las sucursales para seleccionar------------------------
         public int VerSucursalPorLocalidad(int codigoLocalidad)
         {
@@ -482,6 +535,8 @@ namespace TP_CAI
             } while (true);
             return opcion;
         }
+
+
         //----------------------------------Dado un código de provincia nos devuelve la provincia elegida---------------------------------
         public string DevuelveSeleccionProvincia(int codigoProvincia)
         {
@@ -497,7 +552,6 @@ namespace TP_CAI
                         auxiliarDProvincia.Add(region.CodigoProvincia, region.NombreProvincia);
                     }
                 }
-
             }
             string guardarProvincia = "";
             foreach (var item in auxiliarDProvincia)
@@ -507,6 +561,8 @@ namespace TP_CAI
             }
             return guardarProvincia;
         }
+
+
         //----------------------------------Dado un código de localidad nos devuelve la localidad elegida---------------------------------
         public string DevuelveSeleccionLocalidad(int codigoLocalidad)
         {
@@ -531,13 +587,13 @@ namespace TP_CAI
             }
             return guardarLocalidad;
         }
+
+
         //----------------------------------Dado un código de sucursal nos devuelve la sucursal elegida---------------------------------
         public string DevuelveSeleccionSucursal(int codigoSucursal)
         {
             Dictionary<int, string> auxiliarDSucursal = new Dictionary<int, string>();
             bool encontrado = false;
-            //string guardarDireccionSucursal = "";
-            //string guardarCodPostalSucursal = "";
             string guardarSucursal = "";
             foreach (var region in regiones)
             {
@@ -551,13 +607,32 @@ namespace TP_CAI
                     }
                 }
             }
-            //foreach (var item in auxiliarDSucursal)
-            //{
-            //    Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
-            //    guardarSucursal = item.Value;
-            //}
+
             return guardarSucursal;
         }
+
+        public string DevuelveSeleccionSucursalDireccion(int codigoSucursal)
+        {
+            Dictionary<int, string> auxiliarDSucursal = new Dictionary<int, string>();
+            bool encontrado = false;
+            string guardarDirSucursal = "";
+            foreach (var region in regiones)
+            {
+                if (region.CodigoSucursal == codigoSucursal)
+                {
+                    encontrado = auxiliarDSucursal.ContainsKey(region.CodigoSucursal);
+                    if (!encontrado)
+                    {
+                        auxiliarDSucursal.Add(region.CodigoSucursal, region.NombreSucursal);
+                        guardarDirSucursal = region.SucursalDireccion;
+                    }
+                }
+            }
+
+            return guardarDirSucursal;
+        }
+
+
         //----------------------------------Muestra todos los datos de la recepción dependiendo de lo seleccionado---------------------------------
         public void MostrarNuevaRecepcion()
         {
@@ -574,13 +649,14 @@ namespace TP_CAI
             if (TipoRecepcion == "Presentacion en sucursal")
             {
                 Console.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
-                //Console.WriteLine($"Localidad: {NombreLocalidad}");
                 Console.WriteLine("");
                 Console.WriteLine($"Sucursal: {NombreSucursal}");
-                //Console.WriteLine($"Dirección: {SucursalDireccion}\t\t\tCódigo Postal: {SucursalCodigoPostal}");
+                
             }
 
         }
+
+        //----------------------------------Muestra todos los datos de la entrega dependiendo de lo seleccionado---------------------------------
         public void MostrarNuevaEntrega()
         {
             Console.WriteLine("");
@@ -592,18 +668,13 @@ namespace TP_CAI
             if (TipoEntrega == "Entrega en puerta")
             {
                 Console.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
-                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
-                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
                 Console.WriteLine($"Dirección: {DireccionEntrega}\t\tCódigo Postal: {CodigoPostalEntrega}");
             }
             if (TipoEntrega == "Entrega en sucursal")
             {
                 Console.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
-                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
-                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
                 Console.WriteLine("");
                 Console.WriteLine($"Sucursal: {NombreSucursalEntrega}");
-                //Console.WriteLine($"Dirección: {SucursalDireccionEntrega}\t\t\tCódigo Postal: {SucursalCodigoPostalEntrega}");
             }
         }
 
@@ -616,16 +687,13 @@ namespace TP_CAI
             if (TipoRecepcion == "Retiro en puerta")
             {
                 writer.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
-                //Console.WriteLine($"Localidad: {NombreLocalidad}");
                 writer.WriteLine($"Dirección: {RetiroDireccion}\t\t\tCódigo Postal: {RetiroCodigoPostal}");
             }
             if (TipoRecepcion == "Presentacion en sucursal")
             {
                 writer.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
-                //Console.WriteLine($"Localidad: {NombreLocalidad}");
                 writer.WriteLine("");
                 writer.WriteLine($"Sucursal: {NombreSucursal}");
-                //writer.WriteLine($"Dirección: {SucursalDireccion}\t\t\tCódigo Postal: {SucursalCodigoPostal}");
             }
         }
 
@@ -640,18 +708,13 @@ namespace TP_CAI
             if (TipoEntrega == "Entrega en puerta")
             {
                 writer.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
-                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
-                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
                 writer.WriteLine($"Dirección: {DireccionEntrega}\t\t\tCódigo Postal: {CodigoPostalEntrega}");
             }
             if (TipoEntrega == "Entrega en sucursal")
             {
                 writer.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");
-                //Console.WriteLine($"Provincia: {NombreProvinciaEntrega}");
-                //Console.WriteLine($"Localidad: {NombreLocalidadEntrega}");
                 writer.WriteLine("");
                 writer.WriteLine($"Sucursal: {NombreSucursalEntrega}");
-                //writer.WriteLine($"Dirección: {SucursalDireccionEntrega}\t\t\tCódigo Postal: {SucursalCodigoPostalEntrega}");
             }
         }
     }

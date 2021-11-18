@@ -55,21 +55,19 @@ namespace TP_CAI
         {
             string Msj = "";
 
+            Console.WriteLine("Numero Factura \tFecha \t\tMonto \tEstado");
             for (int i = 0; i < facturas.Count; i++)
             {
                 if (codigoCliente == facturas[i].NumeroCliente)
                 {
-                    Console.WriteLine("Numero Factura \tFecha \t\tMonto \tEstado");
                     Msj = $"{facturas[i].NumeroFactura} \t{facturas[i].FechaFactura} \t{facturas[i].Monto} \t{facturas[i].Estado}";
                     Console.WriteLine(Msj);
                 }
-
             }
             if (string.IsNullOrEmpty(Msj))
             {
                 Console.WriteLine("No se emitieron facturas");
             }
-
         }
         public void ListarSaldo(string codigoCliente)
         {
@@ -82,14 +80,12 @@ namespace TP_CAI
                 {
                     acumulador += facturas[i].Monto;
                 }
-
             }
             Console.WriteLine("Posee un saldo deudor de: " + acumulador);
             if (acumulador == 0)
             {
                 Console.WriteLine("No se registra deuda.");
             }
-
         }
     }
 }

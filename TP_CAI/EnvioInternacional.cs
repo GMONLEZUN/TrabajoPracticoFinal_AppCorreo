@@ -15,12 +15,9 @@ namespace TP_CAI
         public string NumOdeServicio { get; private set; }
         public decimal TarifaServicioInternacional { get; private set; }
 
-        //------------------cambio las listas hechas por objetos
         Region NuevaSeleccionRetiro = new Region();
         RegionInternacional NuevaSeleccionEntregaInt = new RegionInternacional();
         Cliente ClienteActivo = new Cliente();
-        //List<Region> NuevaaSeleccionRetiro = new List<Region>();
-        //List<RegionInternacional> ListaSeleccionEntregaInt = new List<RegionInternacional>();
 
         public static EnvioInternacional Ingresar()
         {
@@ -106,16 +103,13 @@ namespace TP_CAI
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
             nuevoEnvioInternacional.NuevaSeleccionRetiro = nuevaSeleccionRetiro;
 
-            //var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
-            //nuevoEnvioInternacional.ListaSeleccionRetiro.Add(nuevaSeleccionRetiro);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Entrega");
             Console.ResetColor();
 
             var nuevaSeleccionEntregaInt = RegionInternacional.SeleccionEntregaInt();
             nuevoEnvioInternacional.NuevaSeleccionEntregaInt = nuevaSeleccionEntregaInt;
-            //var nuevaSeleccionEntregaInt = RegionInternacional.SeleccionEntregaInt();
-            //nuevoEnvioInternacional.ListaSeleccionEntregaInt.Add(nuevaSeleccionEntregaInt);
+   
             //-------------------------------------------------------------------------TARIFA PRIMERO A CABA---------------------------------------------------------
             if (nuevoEnvioInternacional.NuevaSeleccionRetiro.TipoRecepcion == "Retiro en puerta")
             {
@@ -154,7 +148,7 @@ namespace TP_CAI
                 tarifa *= 2.8M;
             }
 
-            //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------
             if (nuevoEnvioInternacional.TiempoEnvioInt == "Envío urgente")
             {
                 if (tarifa * 1.20M > 5500)
@@ -167,6 +161,7 @@ namespace TP_CAI
                 }
             }
             nuevoEnvioInternacional.TarifaServicioInternacional = tarifa;
+
             //------------------------Generamos el número de orden de servicio [seguimiento]-------------------------------------
             Random r = new Random();
             int NumRandom = r.Next(0, 9);
@@ -175,6 +170,7 @@ namespace TP_CAI
             nuevoEnvioInternacional.NumOdeServicio = numOrdenDeServicio;
 
             nuevoEnvioInternacional.MostrarResumenEnvioInternacional();
+
             //----------------------------------------------CONFIRMACION----------------------------------------------------------------------------
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("¿Desea confirmar el servicio? [S/N]");
@@ -183,6 +179,43 @@ namespace TP_CAI
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Orden de servicio confirmada");
                 Console.ResetColor();
+                //---------------------------------------------------Creamos el objeto de la nueva orden de servicio
+                OrdenDeServicio nuevaOrden = new OrdenDeServicio();
+                nuevaOrden.NumeroSeguimiento = nuevoEnvioInternacional.NumOdeServicio;
+                nuevaOrden.NumeroCliente = clienteActivo;
+                nuevaOrden.PaisEntrega = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombrePais;
+                nuevaOrden.RegionEntrega = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt;
+                nuevaOrden.ProvinciaEntrega = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreEstadoEntregaInt;
+                nuevaOrden.LocalidadEntrega = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreLocalidadEntregaInt;
+                nuevaOrden.DireccionEntrega = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.DireccionEntregaInt;
+                nuevaOrden.NombreDestinatario = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreDestinatario;
+                nuevaOrden.FechaOrden = DateTime.Now.Date;
+                nuevaOrden.Importe = nuevoEnvioInternacional.TarifaServicioInternacional;
+                nuevaOrden.EstadoOrden = "Iniciada";
+                nuevaOrden.Region = nuevoEnvioInternacional.NuevaSeleccionRetiro.NombreRegion;
+                nuevaOrden.Provincia = nuevoEnvioInternacional.NuevaSeleccionRetiro.NombreProvincia;
+                nuevaOrden.Localidad = nuevoEnvioInternacional.NuevaSeleccionRetiro.NombreLocalidad;
+                if (nuevoEnvioInternacional.NuevaSeleccionRetiro.TipoRecepcion == "Retiro en puerta")
+                {
+                    nuevaOrden.DireccionOrigen = nuevoEnvioInternacional.NuevaSeleccionRetiro.RetiroDireccion;
+                }
+                else
+                {
+                    nuevaOrden.DireccionOrigen = nuevoEnvioInternacional.NuevaSeleccionRetiro.SucursalDireccion;
+                }
+                nuevaOrden.Recepcion = nuevoEnvioInternacional.NuevaSeleccionRetiro.TipoRecepcion;
+                nuevaOrden.Entrega = nuevoEnvioInternacional.NuevaSeleccionEntregaInt.TipoEntregaInt;
+                nuevaOrden.PesoEncomienda = nuevoEnvioInternacional.PesoPaqueteInt;
+                nuevaOrden.TipoEnvio = nuevoEnvioInternacional.TiempoEnvioInt;
+
+                nuevaOrden.LeerMaestroOrdenes();
+
+                //-------------------------------------------------------agregamos la linea a la lista
+                nuevaOrden.AgregarOrdenDeServicio(nuevaOrden);
+
+                //---------------------------------------------------------grabamos todo en el txt de archivo maestro de ordenes de servicio
+                nuevaOrden.GuardarOrdenDeServicio();
+
                 //---------------------------------------------------Imprimir comprobante------------------------------------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("¿Desea imprimir el comprobante? [S/N]");
@@ -192,7 +225,6 @@ namespace TP_CAI
                     System.Diagnostics.Process.Start($"{nuevoEnvioInternacional.NumOdeServicio}{DateTime.Today.Hour}{DateTime.Today.Minute}{DateTime.Today.Second}.txt");
                 }
                 Console.WriteLine("Gracias por utilizar nuestros servicios");
-
             }
             else
             {
@@ -207,6 +239,8 @@ namespace TP_CAI
 
             return nuevoEnvioInternacional;
         }
+
+
         public void MostrarResumenEnvioInternacional()
         {
             Console.WriteLine("***********************************************************************");
@@ -218,22 +252,16 @@ namespace TP_CAI
             Console.WriteLine($"Peso: {PesoPaqueteInt}");
             Console.WriteLine($"Tiempo de envío: {TiempoEnvioInt}\n");
 
-            //------------------Cambio los foreach por la referencia a un solo objeto
             NuevaSeleccionRetiro.MostrarNuevaRecepcion();
             NuevaSeleccionEntregaInt.MostrarNuevaEntregaInternacional();
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioInternacional}");
             Console.ResetColor();
             Console.WriteLine("");
-            //foreach (var seleccionRetiro in ListaSeleccionRetiro)
-            //{
-            //    seleccionRetiro.MostrarNuevaRecepcion();
-            //}
-            //foreach (var seleccionEntrega in ListaSeleccionEntregaInt)
-            //{
-            //    seleccionEntrega.MostrarNuevaEntregaInternacional();
-            //}
         }
+
+
         public void ImprimirComprobante()
         {
             FileStream archivo = File.OpenWrite($"{NumOdeServicio}{DateTime.Today.Hour}{DateTime.Today.Minute}{DateTime.Today.Second}.txt");

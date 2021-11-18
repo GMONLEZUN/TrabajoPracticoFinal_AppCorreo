@@ -21,38 +21,24 @@ namespace TP_CAI
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+                int opcionSelec = Validaciones.ValidarOpcion("Seleccione la opción que desea realizar", "1. Consultar facturas \n2. Consultar órdenes pendientes de facturación", 1, 2);
                 Console.WriteLine("Seleccione la opción que desea realiar \n1- Consultar facturas \n2- Consultar órdenes pendientes de facturación ");
                 Console.ResetColor();
+
                 string tipoConsulta = "";
-                // corregir validación ***********************************************************************************
-                var ingreso = Console.ReadLine();
-                var ingresoCorrecto = int.TryParse(ingreso, out int opcion);
-                if (!ingresoCorrecto)
-                {
-                    Console.WriteLine("Ingrese una opción válida");
-                    continue;
-                }
-                if (opcion < 1)
-                {
-                    Console.WriteLine("Ingrese una opción válida");
-                    continue;
-                }
-                if (opcion > 2)
-                {
-                    Console.WriteLine("Ingrese una opción válida");
-                    continue;
-                }
-                if (opcion == 1)
+
+                if (opcionSelec == 1)
                 {
                     tipoConsulta = "Consultar facturas";
                 }
-                if (opcion == 2)
+                if (opcionSelec == 2)
                 {
                     tipoConsulta = "Consultar órdenes pendientes de facturación";
                 }
                 nuevoEstadoDeCuenta.TipoConsulta = tipoConsulta;
                 break;
             }
+
             //------------------Consultar facturas--------------------------------------------------------------
             if (nuevoEstadoDeCuenta.TipoConsulta == "Consultar facturas")
             {
@@ -64,8 +50,8 @@ namespace TP_CAI
                 Console.WriteLine("Gracias por utilizar nuestros servicios.");
                 Console.ResetColor();
                 Console.ReadLine();
-
             }
+
             //------------------Consultar ordenes sin facturas ( del mes en curso) --------------------------------------------------------------
             if (nuevoEstadoDeCuenta.TipoConsulta == "Consultar órdenes pendientes de facturación")
             {

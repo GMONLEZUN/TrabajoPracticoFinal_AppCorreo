@@ -9,7 +9,6 @@ namespace TP_CAI
 {
     class RegionInternacional
     {
-
         public string NombreRegionEntregaInt { get; private set; }
         public int CodigoPais { get; private set; }
         public string NombrePais { get; private set; }
@@ -23,6 +22,7 @@ namespace TP_CAI
 
         const string maestroPaises = "maestroPaises.txt";
 
+
         public List<RegionInternacional> paises = new List<RegionInternacional>();
 
 
@@ -33,6 +33,7 @@ namespace TP_CAI
             NombrePais = datos[1];
             NombreRegionEntregaInt = datos[2];
         }
+
         public RegionInternacional()
         {
 
@@ -44,12 +45,12 @@ namespace TP_CAI
         {
             var nuevaSeleccionEntregaInt = new RegionInternacional();
 
-
             while (true)
             {
 
                 string paisSelecc = "";
                 string regionSelecc = "";
+                
                 //----------------------------------Pedimos el tipo de entrega del envío---------------------------------
 
                 nuevaSeleccionEntregaInt.TipoEntregaInt = "Entrega en puerta";
@@ -64,7 +65,8 @@ namespace TP_CAI
                 nuevaSeleccionEntregaInt.NombrePais = paisSelecc;
                 regionSelecc = nuevaSeleccionEntregaInt.DevuelveSeleccionRegion(codPais);
                 nuevaSeleccionEntregaInt.NombreRegionEntregaInt = regionSelecc;
-
+                nuevaSeleccionEntregaInt.CodigoPais = codPais;
+                
                 //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Ingrese la provincia o el estado donde se realizará la entrega del envío");
@@ -78,29 +80,35 @@ namespace TP_CAI
                 Console.ResetColor();
                 string localidad = Console.ReadLine();
                 nuevaSeleccionEntregaInt.NombreLocalidadEntregaInt = localidad;
+
                 //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Ingrese la dirección exacta donde se realizara la entrega del envío");
                 Console.ResetColor();
                 var direccion = Console.ReadLine();
+
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Ingrese el código postal de la dirección ingresada");
                 Console.ResetColor();
                 var ingresoCodPostal = Console.ReadLine();
+
                 bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
                 nuevaSeleccionEntregaInt.DireccionEntregaInt = direccion;
                 nuevaSeleccionEntregaInt.CodigoPostalEntregaInt = CodPostal;
 
                 break;
             }
+
             while (true)
             {
                 //-------------------------------------Pedimos datos del destinatario del envío-----------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Ingrese nombre y apellido del destinatario");
                 Console.ResetColor();
+
                 var nombreDestinatario = Console.ReadLine();
                 nuevaSeleccionEntregaInt.NombreDestinatario = nombreDestinatario;
+
                 var dniDestinatario = Validaciones.ValidarDNI("Ingrese el DNI del destinatario");
                 nuevaSeleccionEntregaInt.NumeroDNIdestinatario = dniDestinatario;
                 break;
@@ -135,9 +143,7 @@ namespace TP_CAI
 
             foreach (var pais in paises)
             {
-
                 auxiliarPais.Add(pais.CodigoPais, pais.NombrePais);
-
             }
             foreach (var pais in auxiliarPais)
             {
@@ -172,7 +178,6 @@ namespace TP_CAI
         }
 
 
-        
         //----------------------------------Dado un código de país nos devuelve el país elegido---------------------------------
         public string DevuelveSeleccionPais(int codigoPais)
         {
@@ -188,7 +193,6 @@ namespace TP_CAI
                         auxiliarDPais.Add(pais.CodigoPais, pais.NombrePais);
                     }
                 }
-
             }
             string guardarPais = "";
             foreach (var item in auxiliarDPais)
@@ -198,6 +202,8 @@ namespace TP_CAI
             }
             return guardarPais;
         }
+
+
         //----------------------------------Dado un código de país nos devuelve la región--------------------------------------
         public string DevuelveSeleccionRegion(int codigoPais)
         {
@@ -213,7 +219,6 @@ namespace TP_CAI
                         auxiliarDPais.Add(pais.CodigoPais, pais.NombreRegionEntregaInt);
                     }
                 }
-
             }
             string guardarRegion = "";
             foreach (var item in auxiliarDPais)
@@ -222,11 +227,10 @@ namespace TP_CAI
                 guardarRegion = item.Value;
             }
             return guardarRegion;
-
         }
 
-        //----------------------------------Muestra todos los datos de la recepción dependiendo de lo seleccionado---------------------------------
 
+        //----------------------------------Muestra todos los datos de la entrega dependiendo de lo seleccionado---------------------------------
         public void MostrarNuevaEntregaInternacional()
         {
             Console.WriteLine("");

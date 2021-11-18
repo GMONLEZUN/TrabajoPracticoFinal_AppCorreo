@@ -11,23 +11,31 @@ namespace TP_CAI
     {
         public string NumeroSeguimiento { get; set; }
         public int CodigoProvincia { get; set; }
+        public string Provincia { get; set; }
         public int CodigoLocalidad { get; set; }
+        public string Localidad { get; set; }
         public int CodigoSucursal { get; set; }
-        public string DomicilioDestinatario { get; set; }
+        public string DireccionEntrega { get; set; }
+        public string DireccionOrigen { get; set; }
         public string NombreDestinatario { get; set; }
         public DateTime FechaOrden { get; set; }
-        public float Importe { get; set; }
+        public decimal Importe { get; set; }
         public string EstadoOrden { get; set; }
         public int CodigoProvinciaEntrega { get; set; }
+        public string ProvinciaEntrega { get; set; }
         public int CodigoLocalidadEntrega { get; set; }
+        public string LocalidadEntrega { get; set; }
         public int CodigoSucursalEntrega { get; set; }
         public string PesoEncomienda { get; set; }
         public string TipoEnvio { get; set; }
         public int CodigoRegion { get; set; }
+        public string Region { get; set; }
         public int CodigoRegionEntrega { get; set; }
+        public string RegionEntrega { get; set; }
         public string Recepcion { get; set; }
         public string Entrega { get; set; }
         public string NumeroCliente { get; set; }
+        public string PaisEntrega { get; set; }
 
         const string maestroOrdenDeServicio = "maestroOrdenDeServicio.txt";
 
@@ -37,25 +45,25 @@ namespace TP_CAI
         {
             var datos = linea.Split('|');
             NumeroSeguimiento = datos[0];
-            CodigoRegionEntrega = int.Parse(datos[1]);
-            CodigoProvinciaEntrega = int.Parse(datos[2]);
-            CodigoLocalidadEntrega = int.Parse(datos[3]);
-            CodigoSucursalEntrega = int.Parse(datos[4]);
-            DomicilioDestinatario = datos[5];
-            NombreDestinatario = datos[6];
-            FechaOrden = DateTime.Parse(datos[7]);
-            Importe = float.Parse(datos[8]);
-            EstadoOrden = datos[9];
-            CodigoRegion = int.Parse(datos[10]);
-            CodigoProvincia = int.Parse(datos[11]);
-            CodigoLocalidad = int.Parse(datos[12]);
-            CodigoSucursal = int.Parse(datos[13]);
-            Recepcion = datos[14];
-            Entrega = datos[15];
-            PesoEncomienda = datos[16];
-            TipoEnvio = datos[17];
-            NumeroCliente = datos[18];
-        }
+            NumeroCliente = datos[1];
+            PaisEntrega = datos[2];
+            RegionEntrega = datos[3];
+            ProvinciaEntrega = datos[4];
+            LocalidadEntrega = datos[5];
+            DireccionEntrega = datos[6];
+            NombreDestinatario = datos[7];
+            FechaOrden = DateTime.Parse(datos[8]);
+            Importe = decimal.Parse(datos[9]);
+            EstadoOrden = datos[10];
+            Region = datos[11];
+            Provincia = datos[12];
+            Localidad = datos[13];
+            DireccionOrigen = datos[14];
+            Recepcion = datos[15];
+            Entrega = datos[16];
+            PesoEncomienda = datos[17];
+            TipoEnvio = datos[18];
+         }
         public OrdenDeServicio()
         {
 
@@ -66,15 +74,16 @@ namespace TP_CAI
             var nuevaODSmostrar = new OrdenDeServicio();
 
             nuevaODSmostrar.LeerMaestroOrdenes();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Ingrese número de orden de seguimiento");
+            Console.ResetColor();
             var numeroDeOrden = Console.ReadLine();
             nuevaODSmostrar.VerOrdenDeServicio(numeroDeOrden);
             Console.WriteLine("Gracias por utilizar nuestros servicios.");
             Console.ReadLine();
             return nuevaODSmostrar;
-
-
         }
+
         public void LeerMaestroOrdenes()
         {
             if (File.Exists(maestroOrdenDeServicio))
@@ -91,6 +100,7 @@ namespace TP_CAI
                 }
             }
         }
+
         public void VerOrdenDeServicio(string ordenDeServicio)
         {
 
@@ -106,182 +116,43 @@ namespace TP_CAI
                         auxiliarOrden.Add(orden.NumeroSeguimiento, orden.EstadoOrden);
                     }
                 }
-
+            }
+            if (!auxiliarOrden.ContainsKey(ordenDeServicio))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("El número ingresado no se encuentra en nuestra base de datos");
+                Console.ResetColor();
+                Console.ReadLine();
+                System.Environment.Exit(0);
             }
 
             foreach (var item in auxiliarOrden)
             {
-
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"{item.Key} \t\t\t{item.Value}");
-
+                Console.ResetColor();
             }
         }
-        public void AgregarOrdendeServicio(int codRegEnt, int codProvEnt, int codLocEnt, int codSucEnt, string domDest, string nomDest,
-            int codReg, int codProv, int codLoc, int codSuc, string recepcion, string entrega, string pesoEnc, string tipoEnv)
 
+        public void AgregarOrdenDeServicio(OrdenDeServicio nuevaOrden)
         {
-            //var unaorden = new OrdenDeServicio();
-            string numeroSeguimiento = Convert.ToString(4448800000000 + AutoEnumerar());
-            float salidaMonto = 0;
-            string Errores = "";
-
-            if (!string.IsNullOrEmpty(Errores))
-            {
-                Console.WriteLine(Errores, "Error");
-            }
-            else
-            {
-                OrdenDeServicio O = new OrdenDeServicio();
-                O.NumeroSeguimiento = numeroSeguimiento;
-                O.CodigoProvincia = codProv;
-                O.CodigoLocalidad = codLoc;
-                O.CodigoSucursal = codSuc;
-                O.CodigoProvinciaEntrega = codProvEnt;
-                O.CodigoLocalidadEntrega = codLocEnt;
-                O.CodigoSucursalEntrega = codSucEnt;
-                O.DomicilioDestinatario = domDest;
-                O.NombreDestinatario = nomDest;
-                O.PesoEncomienda = pesoEnc;
-                O.TipoEnvio = tipoEnv;
-                O.CodigoRegion = codReg;
-                O.CodigoRegionEntrega = codRegEnt;
-                O.Recepcion = recepcion;
-                O.Entrega = entrega;
-
-                salidaMonto = O.CalcularTarifa(O.CodigoLocalidadEntrega, O.CodigoProvinciaEntrega, O.CodigoLocalidadEntrega, O.CodigoSucursalEntrega,
-                    O.CodigoLocalidad, O.CodigoProvincia, O.CodigoLocalidad, O.CodigoSucursal,
-                    O.Recepcion, O.Entrega, O.PesoEncomienda, O.TipoEnvio);
-
-                O.Importe = salidaMonto;
-                O.FechaOrden = DateTime.Now.Date; // -->> que no de la hora
-                O.EstadoOrden = "Iniciada";
-
-                ordenes.Add(O);
-
-                Console.WriteLine("Se generó correctamente la Orden de Servicio.");
-            }
+            ordenes.Add(nuevaOrden);
         }
 
-        private int AutoEnumerar()
-        {
-            Random R = new Random();
-            return R.Next(500000, 999999);
-        }
-
-        private float CalcularTarifa(int codRegEnt, int codProvEnt, int codLocEnt, int codSucEnt,
-            int codReg, int codProv, int codLoc, int codSuc, string recepcion, string entrega, string pesoEnc, string tipoEnv)
-        {
-
-            float acumulador = 0;
-
-            if (pesoEnc == "Correspondencia hasta 500g")
-            {
-                if (codReg != codRegEnt)
-                {
-                    acumulador += 600; //El envío es interregional
-                }
-                if (codProv != codProvEnt)
-                {
-                    acumulador += 500; //El envío es regional
-                }
-                if (codLoc != codLocEnt)
-                {
-                    acumulador += 400; //El envío es provincial
-                }
-                else
-                {
-                    acumulador += 300; //El envío es local
-                }
-            }
-            if (pesoEnc == "Bultos hasta 10Kg.")
-            {
-                if (codReg != codRegEnt)
-                {
-                    acumulador += 1200; //El envío es interregional
-                }
-                if (codProv != codProvEnt)
-                {
-                    acumulador += 1000; //El envío es regional
-                }
-                if (codLoc != codLocEnt)
-                {
-                    acumulador += 800; //El envío es provincial
-                }
-                else
-                {
-                    acumulador += 600; //El envío es local
-                }
-            }
-
-            if (pesoEnc == "Bultos hasta 20Kg.")
-            {
-                if (codReg != codRegEnt)
-                {
-                    acumulador += 1800; //El envío es interregional
-                }
-                if (codProv != codProvEnt)
-                {
-                    acumulador += 1500; //El envío es regional
-                }
-                if (codLoc != codLocEnt)
-                {
-                    acumulador += 1200; //El envío es provincial
-                }
-                else
-                {
-                    acumulador += 900; //El envío es local
-                }
-            }
-            if (pesoEnc == "Bultos hasta 30Kg.")
-            {
-                if (codReg != codRegEnt)
-                {
-                    acumulador += 2400; //El envío es interregional
-                }
-                if (codProv != codProvEnt)
-                {
-                    acumulador += 2000; //El envío es regional
-                }
-                if (codLoc != codLocEnt)
-                {
-                    acumulador += 1600; //El envío es provincial
-                }
-                else
-                {
-                    acumulador += 1200; //El envío es local
-                }
-            }
-            if (tipoEnv == "Urgente")
-            {
-                acumulador += acumulador; // URGENTE
-            }
-            if (recepcion == "Retiro en puerta")
-            {
-                acumulador += 500; // Adicional en puerta
-            }
-            if (entrega == "Retiro en puerta")
-            {
-                acumulador += 500; // Adicional en puerta
-            }
-
-            return acumulador;
-
-
-        }
 
         public void ListarOrdenesPendientesFacturacion(string codigoCliente)
         {
             string Msj = "";
-
+            
+            Console.WriteLine("Numero Factura \t\tFecha \t\tMonto \t\tEstado");
             for (int i = 0; i < ordenes.Count; i++)
             {
                 if (codigoCliente == ordenes[i].NumeroCliente && DateTime.Now.Month == ordenes[i].FechaOrden.Month)
                 {
-                    Console.WriteLine("Numero Factura \tFecha \t\tMonto \tEstado");
-                    Msj = $"{ordenes[i].NumeroSeguimiento} \t{ordenes[i].FechaOrden} \t{ordenes[i].Importe} \t{ordenes[i].EstadoOrden}";
+                    
+                    Msj = $"{ordenes[i].NumeroSeguimiento} \t{ordenes[i].FechaOrden.ToShortDateString()} \t{ordenes[i].Importe.ToString()} \t{ordenes[i].EstadoOrden}";
                     Console.WriteLine(Msj);
                 }
-
             }
             if (string.IsNullOrEmpty(Msj))
             {
@@ -297,14 +168,14 @@ namespace TP_CAI
 
             foreach (OrdenDeServicio O in ordenes)
             {
-                SW.WriteLine(O.NumeroSeguimiento + "|" + O.CodigoRegionEntrega + "|" + O.CodigoProvinciaEntrega + "|" + O.CodigoLocalidadEntrega + "|" + O.CodigoSucursalEntrega + "|"
-                    + O.DomicilioDestinatario + "|" + O.NombreDestinatario + "|" + O.FechaOrden + "|" + O.Importe + "|" + O.EstadoOrden + "|"
-                    + O.CodigoRegion + "|" + O.CodigoProvincia + "|" + O.CodigoLocalidad + "|" + O.CodigoSucursal + "|"
-                    + O.Recepcion + "|" + O.Entrega + "|" + O.PesoEncomienda + "|" + O.TipoEnvio);
+                SW.WriteLine(O.NumeroSeguimiento + "|" + O.NumeroCliente + "|" + O.PaisEntrega + "|" + O.RegionEntrega + "|" + O.ProvinciaEntrega + "|"
+                    + O.LocalidadEntrega + "|" + O.DireccionEntrega + "|" + O.NombreDestinatario + "|" + O.FechaOrden + "|" + O.Importe + "|"
+                    + O.EstadoOrden + "|" + O.Region + "|" + O.Provincia + "|" + O.Localidad + "|"
+                    + O.DireccionOrigen + "|" + O.Recepcion + "|" + O.Entrega + "|" + O.PesoEncomienda + "|" + O.TipoEnvio);
             }
 
             SW.Close();
-            Console.WriteLine("Se guardo correctamente la Orden de Servicio.");
+            Console.WriteLine("Se guardó correctamente la Orden de Servicio.");
         }
 
     }
