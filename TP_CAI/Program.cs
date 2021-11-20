@@ -27,7 +27,7 @@ namespace TP_CAI
             Console.Clear();
 
             //------------------------------------Opciones Principales -------------------------------------------
-            int opcionSelec = Validaciones.ValidarOpcion("Ingrese lo que desea realizar: ", "1. Nueva solicitud de envío Nacional \n2. Envíos Internacionales \n3. Consultar Estado de envío \n4. Consultar Estado de cuenta corriente\n0.Salir", 0, 4);
+            int opcionSelec = Validaciones.ValidarOpcion("Ingrese lo que desea realizar: ", "1. Nueva solicitud de envío Nacional \n2. Nueva solicitud de envío Internacional \n3. Consultar Estado de envío \n4. Consultar Estado de cuenta corriente\n0.Salir", 0, 4);
             Console.ResetColor();
             switch (opcionSelec)
             {

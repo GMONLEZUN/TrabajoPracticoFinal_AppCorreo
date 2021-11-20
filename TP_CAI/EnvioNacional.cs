@@ -30,7 +30,7 @@ namespace TP_CAI
             while (true)
             {
                 
-                int opcionSelec = Validaciones.ValidarOpcion("Seleccione el tipo de paquete que desea enviar: ", "1 - Correspondencia \n2 - Encomienda", 1, 2);
+                int opcionSelec = Validaciones.ValidarOpcion("Seleccione el tipo de paquete que desea enviar: ", "1 - Correspondencia (Hasta 500g) \n2 - Encomienda (Hasta 30kg)", 1, 2);
                 string tipoPaquete = "";
                 if (opcionSelec == 1)
                 {
@@ -256,7 +256,7 @@ namespace TP_CAI
             NuevaSeleccionEntrega.MostrarNuevaEntrega();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioNacional}");
+            Console.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioNacional.ToString("n2")}");
             Console.ResetColor();
             Console.WriteLine("");
         }
@@ -281,7 +281,7 @@ namespace TP_CAI
                 writer.WriteLine("");
                 writer.WriteLine($"Número de seguimiento: [{NumOdeServicio}]\n");
                 writer.WriteLine("[ ! ] Conservelo para consultar el estado del envío\n");
-                writer.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioNacional}");
+                writer.WriteLine($"\t\t\tImporte total del servicio: ${TarifaServicioNacional.ToString("n2")}");
                 writer.WriteLine("***********************************************************************\n\n");
                 writer.WriteLine("[ ! ] Presione Ctrl+P para imprimir este comprobante");
                 writer.WriteLine("[ ! ] Presione Ctrl+Mayús+S para guardar este comprobante");

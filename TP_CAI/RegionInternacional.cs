@@ -55,10 +55,10 @@ namespace TP_CAI
 
                 nuevaSeleccionEntregaInt.TipoEntregaInt = "Entrega en puerta";
 
-                //----------------------------------Pedimos el país de retiro del envío---------------------------------
+                //----------------------------------Pedimos el país de entrega del envío---------------------------------
                 nuevaSeleccionEntregaInt.LeerMaestroPaises();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Seleccione el país donde se realizará el retiro del envío");
+                Console.WriteLine("Seleccione el país donde se realizará la entrega del envío");
                 Console.ResetColor();
                 int codPais = nuevaSeleccionEntregaInt.VerPaises();
                 paisSelecc = nuevaSeleccionEntregaInt.DevuelveSeleccionPais(codPais);

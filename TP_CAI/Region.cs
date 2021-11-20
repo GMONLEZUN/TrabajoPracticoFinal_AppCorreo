@@ -229,7 +229,7 @@ namespace TP_CAI
                     nuevaSeleccionEntrega.TipoEntrega = "Entrega en puerta";
 
                     //----------------------------------Pedimos la región de entrega del envío---------------------------------
-                    int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará el retiro del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
+                    int opcionRegion = Validaciones.ValidarRegion("Seleccione la región donde se realizará la entrega del envío: ", "10-Región Pampeana\n20-Región NOA\n30-Región NEA\n40-Región Patagónica\n");
                     nuevaSeleccionEntrega.LeerMaestroRegiones();
 
                     if (opcionRegion == 10)
