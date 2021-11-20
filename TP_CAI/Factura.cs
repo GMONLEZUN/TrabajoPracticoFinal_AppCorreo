@@ -13,7 +13,7 @@ namespace TP_CAI
         public string NumeroCliente { get; }
         public string NumeroFactura { get; }
         public string Estado { get; }
-        public float Monto { get; }
+        public decimal Monto { get; }
         public string FechaFactura { get; }
 
         const string maestroFacturas = "MaestroFacturas.txt";
@@ -26,7 +26,7 @@ namespace TP_CAI
             NumeroCliente = datos[0];
             NumeroFactura = datos[1];
             Estado = datos[2];
-            Monto = float.Parse(datos[3]);
+            Monto = decimal.Parse(datos[3]);
             FechaFactura = datos[4];
         }
         public Factura()
@@ -60,7 +60,7 @@ namespace TP_CAI
             {
                 if (codigoCliente == facturas[i].NumeroCliente)
                 {
-                    Msj = $"{facturas[i].NumeroFactura} \t{facturas[i].FechaFactura} \t{facturas[i].Monto} \t{facturas[i].Estado}";
+                    Msj = $"{facturas[i].NumeroFactura} \t{facturas[i].FechaFactura} \t{facturas[i].Monto.ToString("n2")} \t{facturas[i].Estado}";
                     Console.WriteLine(Msj);
                 }
             }
@@ -72,7 +72,7 @@ namespace TP_CAI
         public void ListarSaldo(string codigoCliente)
         {
 
-            float acumulador = 0;
+            decimal acumulador = 0;
 
             for (int i = 0; i < facturas.Count; i++)
             {
@@ -81,7 +81,8 @@ namespace TP_CAI
                     acumulador += facturas[i].Monto;
                 }
             }
-            Console.WriteLine("Posee un saldo deudor de: " + acumulador);
+            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine("Posee un saldo deudor de: $" + acumulador.ToString("n2"));
             if (acumulador == 0)
             {
                 Console.WriteLine("No se registra deuda.");

@@ -22,7 +22,6 @@ namespace TP_CAI
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 int opcionSelec = Validaciones.ValidarOpcion("Seleccione la opción que desea realizar", "1. Consultar facturas \n2. Consultar órdenes pendientes de facturación", 1, 2);
-                Console.WriteLine("Seleccione la opción que desea realiar \n1- Consultar facturas \n2- Consultar órdenes pendientes de facturación ");
                 Console.ResetColor();
 
                 string tipoConsulta = "";

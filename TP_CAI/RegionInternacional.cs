@@ -221,6 +221,7 @@ namespace TP_CAI
                 }
             }
             string guardarRegion = "";
+            Console.WriteLine("Región:");
             foreach (var item in auxiliarDPais)
             {
                 Console.WriteLine($"{item.Key} \t\t\t{item.Value}");

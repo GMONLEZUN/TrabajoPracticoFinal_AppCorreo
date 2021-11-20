@@ -150,7 +150,7 @@ namespace TP_CAI
                 if (codigoCliente == ordenes[i].NumeroCliente && DateTime.Now.Month == ordenes[i].FechaOrden.Month)
                 {
                     
-                    Msj = $"{ordenes[i].NumeroSeguimiento} \t{ordenes[i].FechaOrden.ToShortDateString()} \t{ordenes[i].Importe} \t{ordenes[i].EstadoOrden}";
+                    Msj = $"{ordenes[i].NumeroSeguimiento} \t{ordenes[i].FechaOrden.ToShortDateString()} \t{ordenes[i].Importe.ToString("n2")} \t{ordenes[i].EstadoOrden}";
                     Console.WriteLine(Msj);
                 }
             }
