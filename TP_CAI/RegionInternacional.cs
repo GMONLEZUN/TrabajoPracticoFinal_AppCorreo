@@ -83,7 +83,7 @@ namespace TP_CAI
 
                 //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Ingrese la dirección exacta donde se realizara la entrega del envío");
+                Console.WriteLine("Ingrese la dirección exacta donde se realizará la entrega del envío");
                 Console.ResetColor();
                 var direccion = Console.ReadLine();
 
@@ -137,7 +137,7 @@ namespace TP_CAI
         public int VerPaises()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("CodigoPaís \tNombre País");
+            Console.WriteLine("Código País \tNombre País");
             Console.ResetColor();
             Dictionary<int, string> auxiliarPais = new Dictionary<int, string>();
 

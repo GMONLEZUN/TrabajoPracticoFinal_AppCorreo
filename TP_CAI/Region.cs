@@ -272,7 +272,7 @@ namespace TP_CAI
 
                     //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Ingrese la dirección exacta donde se realizara la entrega del envío");
+                    Console.WriteLine("Ingrese la dirección exacta donde se realizará la entrega del envío");
                     Console.ResetColor();
 
                     var direccion = Console.ReadLine();
@@ -385,7 +385,7 @@ namespace TP_CAI
         public int VerProvinciaPorRegion(int codigoregion)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("CodigoProvincia \tNombre Provincia");
+            Console.WriteLine("Código Provincia \tNombre Provincia");
             Console.ResetColor();
             Dictionary<int, string> auxiliarRegion = new Dictionary<int, string>();
             bool encontrado = false;
@@ -437,7 +437,7 @@ namespace TP_CAI
         public int VerLocalidadPorProvincia(int codigoProvincia)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("CodigoLocalidad \tNombre Localidad");
+            Console.WriteLine("Código Localidad \tNombre Localidad");
             Console.ResetColor();
             Dictionary<int, string> auxiliarProvincia = new Dictionary<int, string>();
             bool encontrado = false;
@@ -489,7 +489,7 @@ namespace TP_CAI
         public int VerSucursalPorLocalidad(int codigoLocalidad)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("CodigoSucursal \t\t\tNombre Sucursal");
+            Console.WriteLine("Código Sucursal \t\t\tNombre Sucursal");
             Console.ResetColor();
             Dictionary<int, string> auxiliarLocalidad = new Dictionary<int, string>();
             bool encontrado = false;
@@ -639,7 +639,7 @@ namespace TP_CAI
             Console.WriteLine("");
             Console.WriteLine("Origen");
             Console.WriteLine("-----------------------------------------------------------------------");
-            Console.WriteLine($"Tipo de recepcion: {TipoRecepcion}");
+            Console.WriteLine($"Tipo de recepción: {TipoRecepcion}");
             if (TipoRecepcion == "Retiro en puerta")
             {
                 Console.WriteLine($"Provincia: {NombreProvincia}\t\t\tLocalidad: {NombreLocalidad}");
@@ -664,7 +664,7 @@ namespace TP_CAI
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine($"Destinatario: {NombreDestinatario}\t\t\tDNI: {NumeroDNIdestinatario}");
             Console.WriteLine("");
-            Console.WriteLine($"Tipo de recepcion: {TipoEntrega}");
+            Console.WriteLine($"Tipo de entrega: {TipoEntrega}");
             if (TipoEntrega == "Entrega en puerta")
             {
                 Console.WriteLine($"Provincia: {NombreProvinciaEntrega}\t\t\tLocalidad: {NombreLocalidadEntrega}");

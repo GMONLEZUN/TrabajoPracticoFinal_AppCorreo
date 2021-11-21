@@ -71,14 +71,14 @@ namespace TP_CAI
                 if (dni.Length > 8)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("El número de dni no puede poseer más de 8 dígitos");
+                    Console.WriteLine("El número de DNI no puede poseer más de 8 dígitos");
                     Console.ResetColor();
                     continue;
                 }
                 if (dni.Length < 8)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("El número de dni no puede poseer menos de 8 dígitos");
+                    Console.WriteLine("El número de DNI no puede poseer menos de 8 dígitos");
                     Console.ResetColor();
                     continue;
                 }

@@ -99,7 +99,7 @@ namespace TP_CAI
             } while (true);
 
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Seleccione el tipo de recepción en orígen:");
+            Console.WriteLine("Seleccione el tipo de recepción en origen:");
             Console.ResetColor();
             var nuevaSeleccionRetiro = Region.SeleccionRecepcion();
             nuevoEnvioNacional.NuevaSeleccionRetiro = nuevaSeleccionRetiro;

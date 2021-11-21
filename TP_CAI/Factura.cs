@@ -55,7 +55,7 @@ namespace TP_CAI
         {
             string Msj = "";
 
-            Console.WriteLine("Numero Factura \tFecha \t\tMonto \tEstado");
+            Console.WriteLine("Número Factura \tFecha \t\tMonto \tEstado");
             for (int i = 0; i < facturas.Count; i++)
             {
                 if (codigoCliente == facturas[i].NumeroCliente)

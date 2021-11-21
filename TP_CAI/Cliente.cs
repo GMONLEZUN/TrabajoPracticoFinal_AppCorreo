@@ -61,7 +61,7 @@ namespace TP_CAI
                     if (clEncontrado == false || dniEncontrado == false)
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("El cliente o dni ingresado no se encuentra en nuestra registrado en nuestra base de datos");
+                        Console.WriteLine("El cliente o dni no se encuentra nuestra base de datos");
                         Console.ResetColor();
                         Console.ReadKey();
                         System.Environment.Exit(0);
