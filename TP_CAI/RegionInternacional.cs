@@ -68,33 +68,23 @@ namespace TP_CAI
                 nuevaSeleccionEntregaInt.CodigoPais = codPais;
                 
                 //----------------------------------Pedimos la provincia de entrega del envío---------------------------------
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Ingrese la provincia o el estado donde se realizará la entrega del envío");
-                Console.ResetColor();
-                string estadoProvincia = Console.ReadLine();
+
+                var estadoProvincia = Validaciones.ValidarBarraEnString("Ingrese la provincia o el estado donde se realizará la entrega del envío");
+
                 nuevaSeleccionEntregaInt.NombreEstadoEntregaInt = estadoProvincia;
 
                 //----------------------------------Pedimos la localidad de entrega del envío---------------------------------
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Ingrese la localidad donde se realizará la entrega del envío");
-                Console.ResetColor();
-                string localidad = Console.ReadLine();
+
+                var localidad = Validaciones.ValidarBarraEnString("Ingrese la localidad donde se realizará la entrega del envío");
+
                 nuevaSeleccionEntregaInt.NombreLocalidadEntregaInt = localidad;
 
                 //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
-                //Console.ForegroundColor = ConsoleColor.Cyan;
-                //Console.WriteLine("Ingrese la dirección exacta donde se realizará la entrega del envío");
-                //Console.ResetColor();
+  
                 var direccion = Validaciones.ValidarBarraEnString("Ingrese la dirección exacta donde se realizará la entrega del envío");
-                //var direccion = Console.ReadLine();
-
-                //Console.ForegroundColor = ConsoleColor.Cyan;
-                //Console.WriteLine("Ingrese el código postal de la dirección ingresada");
-                //Console.ResetColor();
+       
                 var CodPostal = Validaciones.ValidarBarraEnInt("Ingrese el código postal de la dirección ingresada", "el código postal", 4, 6);
-                //var ingresoCodPostal = Console.ReadLine();
 
-                //bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
                 nuevaSeleccionEntregaInt.DireccionEntregaInt = direccion;
                 nuevaSeleccionEntregaInt.CodigoPostalEntregaInt = CodPostal;
 
@@ -104,11 +94,6 @@ namespace TP_CAI
             while (true)
             {
                 //-------------------------------------Pedimos datos del destinatario del envío-----------------------------------
-                //Console.ForegroundColor = ConsoleColor.Cyan;
-                //Console.WriteLine("Ingrese nombre y apellido del destinatario");
-                //Console.ResetColor();
-
-                //var nombreDestinatario = Console.ReadLine();
                 var nombreDestinatario = Validaciones.ValidarBarraEnString("Ingrese nombre y apellido del destinatario");
                 nuevaSeleccionEntregaInt.NombreDestinatario = nombreDestinatario;
 

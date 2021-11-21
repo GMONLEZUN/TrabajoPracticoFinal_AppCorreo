@@ -208,6 +208,13 @@ namespace TP_CAI
                     Console.ResetColor();
                     continue;
                 }
+                if (int.TryParse(ingreso, out int ingresoInt))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El ingreso no puede ser únicamente numérico");
+                    Console.ResetColor();
+                    continue;
+                }
                 break;
             } while (true);
             return ingreso;
