@@ -213,7 +213,7 @@ namespace TP_CAI
             return ingreso;
         }
 
-        static public int ValidarBarraEnInt(string mensaje, string variable, int Min)
+        static public int ValidarBarraEnInt(string mensaje, string variable, int Min, int Max)
         {
             int salida;
             do
@@ -231,10 +231,19 @@ namespace TP_CAI
                 }
                 if (salida.ToString().Length < Min)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Ingreso inválido, {variable} no puede ser menor a {Min} caracteres");
+                    Console.ResetColor();
                     continue;
                 }
-          
+                if (salida.ToString().Length > Max)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Ingreso inválido, {variable} no puede ser menor a {Max} caracteres");
+                    Console.ResetColor();
+                    continue;
+                }
+
                 bool existeBarra = false;
                 char[] ingresoArray = ingreso.ToArray();
                 foreach (var item in ingresoArray)

@@ -91,7 +91,7 @@ namespace TP_CAI
                 //Console.ForegroundColor = ConsoleColor.Cyan;
                 //Console.WriteLine("Ingrese el código postal de la dirección ingresada");
                 //Console.ResetColor();
-                var CodPostal = Validaciones.ValidarBarraEnInt("Ingrese el código postal de la dirección ingresada", "el código postal", 4);
+                var CodPostal = Validaciones.ValidarBarraEnInt("Ingrese el código postal de la dirección ingresada", "el código postal", 4, 8);
                 //var ingresoCodPostal = Console.ReadLine();
 
                 //bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
