@@ -180,7 +180,7 @@ namespace TP_CAI
         {
             string Msj = "";
             
-            Console.WriteLine("Numero Factura \t\tFecha \t\tMonto \t\tEstado");
+            Console.WriteLine("Número de seguimiento\tFecha \t\tMonto \t\tEstado");
             for (int i = 0; i < ordenes.Count; i++)
             {
                 if (codigoCliente == ordenes[i].NumeroCliente && DateTime.Now.Month == ordenes[i].FechaOrden.Month)
