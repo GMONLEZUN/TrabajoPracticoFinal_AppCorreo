@@ -164,7 +164,7 @@ namespace TP_CAI
 
             //----------------------------------------------CONFIRMACION----------------------------------------------------------------------------
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("¿Desea confirmar el servicio? [S/N]");
+            Console.WriteLine("¿Desea confirmar el servicio ?\n\n * Presione S para confirmar \n * Presione cualquier otra tecla para cancelar");
             Console.ResetColor();
             if (Console.ReadKey(true).Key == ConsoleKey.S)
             {
@@ -217,7 +217,7 @@ namespace TP_CAI
 
                 //---------------------------------------------------Imprimir comprobante------------------------------------------------------------
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("¿Desea imprimir el comprobante? [S/N]");
+                Console.WriteLine("¿Desea imprimir el comprobante?\n\n * Presione S para imprimir\n * Presione cualquier otra tecla para continuar");
                 if (Console.ReadKey(true).Key == ConsoleKey.S)
                 {
                     nuevoEnvioNacional.ImprimirComprobante();
