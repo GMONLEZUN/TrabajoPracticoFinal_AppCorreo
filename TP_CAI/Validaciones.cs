@@ -196,7 +196,16 @@ namespace TP_CAI
                 }
                 if (existeBarra)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("No se permite el ingreso del caracter |");
+                    Console.ResetColor();
+                    continue;
+                }
+                if (ingreso.Length < 4)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El ingreso debe ser mayor a 4 caracteres");
+                    Console.ResetColor();
                     continue;
                 }
                 break;
