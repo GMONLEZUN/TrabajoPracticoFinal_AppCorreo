@@ -74,10 +74,46 @@ namespace TP_CAI
             var nuevaODSmostrar = new OrdenDeServicio();
 
             nuevaODSmostrar.LeerMaestroOrdenes();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Ingrese número de orden de seguimiento");
-            Console.ResetColor();
-            var numeroDeOrden = Console.ReadLine();
+            string numeroDeOrden;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("Ingrese número de orden de seguimiento");
+                Console.ResetColor();
+                numeroDeOrden = Console.ReadLine();
+                char[] numeroDeOrdenArray = numeroDeOrden.ToArray();
+                bool encontradoLetraEnArray = false;
+                foreach (var item in numeroDeOrdenArray)
+                {
+                    if (!char.IsDigit(item))
+                    {
+                        encontradoLetraEnArray = true;
+                    }
+                }
+                if (encontradoLetraEnArray)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de orden de seguimiento solo puede contener números");
+                    Console.ResetColor();
+                    continue;
+                }
+                if (numeroDeOrden.Length > 15)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de orden de seguimiento no puede tener más de 15 dígitos");
+                    Console.ResetColor();
+                    continue;
+                }
+                if (numeroDeOrden.Length < 15)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El número de orden de seguimiento no puede tener menos de 15 dígitos");
+                    Console.ResetColor();
+                    continue;
+                }
+                break;
+            } while (true);
+            
             nuevaODSmostrar.VerOrdenDeServicio(numeroDeOrden);
             Console.WriteLine("Gracias por utilizar nuestros servicios.");
             Console.ReadLine();
