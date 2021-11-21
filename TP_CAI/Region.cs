@@ -129,19 +129,19 @@ namespace TP_CAI
                     nuevaSeleccionRecepcion.CodigoLocalidad = codLocalidad;
 
                     //----------------------------------Pedimos la dirección exacta de retiro del envío---------------------------------
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Ingrese la dirección exacta donde se realizara el retiro del envío");
-                    Console.ResetColor();
+                    //Console.ForegroundColor = ConsoleColor.Cyan;
+                    //Console.WriteLine("Ingrese la dirección exacta donde se realizara el retiro del envío");
+                    //Console.ResetColor();
+                    var direccion = Validaciones.ValidarBarraEnString("Ingrese la dirección exacta donde se realizara el retiro del envío");
+                    //var direccion = Console.ReadLine();
 
-                    var direccion = Console.ReadLine();
+                    //Console.ForegroundColor = ConsoleColor.Cyan;
+                    //Console.WriteLine("Ingrese el código postal de la dirección ingresada");
+                    //Console.ResetColor();
+                    var CodPostal = Validaciones.ValidarBarraEnInt("Ingrese el código postal de la dirección ingresada", "el código postal", 4);
+                    //var ingresoCodPostal = Console.ReadLine();
 
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Ingrese el código postal de la dirección ingresada");
-                    Console.ResetColor();
-
-                    var ingresoCodPostal = Console.ReadLine();
-
-                    bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
+                    //bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
                     nuevaSeleccionRecepcion.RetiroDireccion = direccion;
                     nuevaSeleccionRecepcion.RetiroCodigoPostal = CodPostal;
                 }
@@ -271,20 +271,22 @@ namespace TP_CAI
                     nuevaSeleccionEntrega.CodigoLocalidadEntrega = codLocalidad;
 
                     //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Ingrese la dirección exacta donde se realizará la entrega del envío");
-                    Console.ResetColor();
+                    //Console.ForegroundColor = ConsoleColor.Cyan;
+                    //Console.WriteLine("Ingrese la dirección exacta donde se realizará la entrega del envío");
+                    //Console.ResetColor();
+                    var direccion = Validaciones.ValidarBarraEnString("Ingrese la dirección exacta donde se realizará la entrega del envío");
+                    //var direccion = Console.ReadLine();
 
-                    var direccion = Console.ReadLine();
+                    //Console.ForegroundColor = ConsoleColor.Cyan;
+                    //Console.WriteLine("Ingrese el código postal de la dirección ingresada");
+                    //Console.ResetColor();
 
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Ingrese el código postal de la dirección ingresada");
-                    Console.ResetColor();
-
-                    var ingresoCodPostal = Console.ReadLine();
-                    bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
+                    //var ingresoCodPostal = Console.ReadLine();
+                    //bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
+                    var CodPostal = Validaciones.ValidarBarraEnInt("Ingrese el código postal de la dirección ingresada", "el código postal", 4);
                     nuevaSeleccionEntrega.DireccionEntrega = direccion;
                     nuevaSeleccionEntrega.CodigoPostalEntrega = CodPostal;
+
                 }
                 if (opcionSelec == 2)
                 {
@@ -351,11 +353,11 @@ namespace TP_CAI
             while (true)
             {
                 //-------------------------------------Pedimos datos del destinatario del envío-----------------------------------
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Ingrese nombre y apellido del destinatario");
-                Console.ResetColor();
-
-                var nombreDestinatario = Console.ReadLine();
+                //Console.ForegroundColor = ConsoleColor.Cyan;
+                //Console.WriteLine("Ingrese nombre y apellido del destinatario");
+                //Console.ResetColor();
+                var nombreDestinatario = Validaciones.ValidarBarraEnString("Ingrese nombre y apellido del destinatario");
+                //var nombreDestinatario = Console.ReadLine();
                 nuevaSeleccionEntrega.NombreDestinatario = nombreDestinatario;
                 var dniDestinatario = Validaciones.ValidarDNI("Ingrese el DNI del destinatario");
                 nuevaSeleccionEntrega.NumeroDNIdestinatario = dniDestinatario;

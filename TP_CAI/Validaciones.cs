@@ -86,12 +86,26 @@ namespace TP_CAI
                 if (!verificarQueSeaNumero)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Los carácteres ingresados NO corresponden a carácteres numéricos.");
+                    Console.WriteLine("Los carácteres ingresados no corresponden a carácteres numéricos.");
                     Console.ResetColor();
-                    Console.WriteLine("----------------------------------------");
 
                     continue;
                 }
+                bool existeBarra = false;
+                char[] ingresoArray = dni.ToArray();
+                foreach (var item in ingresoArray)
+                {
+                    if (item == '|')
+                    {
+                        existeBarra = true;
+                    }
+                }
+                if (existeBarra)
+                {
+                    Console.WriteLine("No se permite el ingreso del caracter |");
+                    continue;
+                }
+
                 break;
             } while (true);
 
@@ -161,6 +175,76 @@ namespace TP_CAI
                 break;
             } while (true);
             return opcion;
+        }
+        static public string ValidarBarraEnString(string mensaje)
+        {
+
+            string ingreso;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(mensaje);
+                ingreso = Console.ReadLine();
+                bool existeBarra = false;
+                char[] ingresoArray = ingreso.ToArray();
+                foreach (var item in ingresoArray)
+                {
+                    if (item == '|')
+                    {
+                        existeBarra = true;
+                    }
+                }
+                if (existeBarra)
+                {
+                    Console.WriteLine("No se permite el ingreso del caracter |");
+                    continue;
+                }
+                break;
+            } while (true);
+            return ingreso;
+        }
+
+        static public int ValidarBarraEnInt(string mensaje, string variable, int Min)
+        {
+            int salida;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(mensaje);
+                var ingreso = Console.ReadLine();
+                bool ingresoCorrecto = int.TryParse(ingreso, out salida);
+                if (!ingresoCorrecto)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ingreso inválido, intente nuevamente");
+                    Console.ResetColor();
+                    continue;
+                }
+                if (salida.ToString().Length < Min)
+                {
+                    Console.WriteLine($"Ingreso inválido, {variable} no puede ser menor a {Min} caracteres");
+                    continue;
+                }
+          
+                bool existeBarra = false;
+                char[] ingresoArray = ingreso.ToArray();
+                foreach (var item in ingresoArray)
+                {
+                    if (item == '|')
+                    {
+                        existeBarra = true;
+                    }
+                }
+                if (existeBarra)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("No se permite el ingreso del caracter |");
+                    Console.ResetColor();
+                    continue;
+                }
+                break;
+            } while (true);
+            return salida;
         }
     }
 }
