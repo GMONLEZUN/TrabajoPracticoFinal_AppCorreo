@@ -93,7 +93,7 @@ namespace TP_CAI
                 if (encontradoLetraEnArray)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("El número de orden de seguimiento solo puede contener números");
+                    Console.WriteLine("El número de orden de seguimiento sólo puede contener números");
                     Console.ResetColor();
                     continue;
                 }
