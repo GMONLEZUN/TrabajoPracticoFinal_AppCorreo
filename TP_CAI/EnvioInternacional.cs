@@ -52,19 +52,19 @@ namespace TP_CAI
                     case 1:
                         {
                             pesoEncomienda = "Bultos hasta 10Kg.";
-                            tarifa = tarifa * 2.75M;
+                            //tarifa = tarifa * 2.75M;
                             break;
                         }
                     case 2:
                         {
                             pesoEncomienda = "Bultos hasta 20Kg.";
-                            tarifa = tarifa * 4.25M;
+                            //tarifa = tarifa * 4.25M;
                             break;
                         }
                     case 3:
                         {
                             pesoEncomienda = "Bultos hasta 30Kg.";
-                            tarifa = tarifa * 5.75M;
+                            //tarifa = tarifa * 5.75M;
                             break;
                         }
                     default:
@@ -114,6 +114,18 @@ namespace TP_CAI
             if (nuevoEnvioInternacional.NuevaSeleccionRetiro.TipoRecepcion == "Retiro en puerta")
             {
                 tarifa += 160;
+            }
+            if (nuevoEnvioInternacional.PesoPaqueteInt == "Bultos hasta 10Kg.")
+            {
+                tarifa *= 2.75M;
+            }
+            if (nuevoEnvioInternacional.PesoPaqueteInt == "Bultos hasta 20Kg.")
+            {
+                tarifa *= 4.25M;
+            }
+            if (nuevoEnvioInternacional.PesoPaqueteInt == "Bultos hasta 30Kg.")
+            {
+                tarifa *= 5.75M;
             }
             if (nuevoEnvioInternacional.NuevaSeleccionRetiro.NombreRegion != "Región Pampeana")
             {

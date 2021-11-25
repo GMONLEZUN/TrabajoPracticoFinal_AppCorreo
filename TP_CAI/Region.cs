@@ -271,18 +271,9 @@ namespace TP_CAI
                     nuevaSeleccionEntrega.CodigoLocalidadEntrega = codLocalidad;
 
                     //----------------------------------Pedimos la dirección exacta de entrega del envío---------------------------------
-                    //Console.ForegroundColor = ConsoleColor.Cyan;
-                    //Console.WriteLine("Ingrese la dirección exacta donde se realizará la entrega del envío");
-                    //Console.ResetColor();
+             
                     var direccion = Validaciones.ValidarBarraEnString("Ingrese la dirección exacta donde se realizará la entrega del envío");
-                    //var direccion = Console.ReadLine();
-
-                    //Console.ForegroundColor = ConsoleColor.Cyan;
-                    //Console.WriteLine("Ingrese el código postal de la dirección ingresada");
-                    //Console.ResetColor();
-
-                    //var ingresoCodPostal = Console.ReadLine();
-                    //bool ingresoCorr4 = int.TryParse(ingresoCodPostal, out int CodPostal);
+     
                     var CodPostal = Validaciones.ValidarBarraEnInt("Ingrese el código postal de la dirección ingresada", "el código postal", 4, 4);
                     nuevaSeleccionEntrega.DireccionEntrega = direccion;
                     nuevaSeleccionEntrega.CodigoPostalEntrega = CodPostal;

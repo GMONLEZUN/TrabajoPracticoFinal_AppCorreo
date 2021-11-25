@@ -134,12 +134,16 @@ namespace TP_CAI
                 }
                 if (opcion < OpcMin)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Ingreso inválido, la opción no puede ser menor a {OpcMin}");
+                    Console.ResetColor();
                     continue;
                 }
                 if (opcion > OpcMax)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Ingreso inválido, la opción no puede ser mayor a {OpcMax}");
+                    Console.ResetColor();
                     continue;
                 }
                 break;
@@ -184,6 +188,7 @@ namespace TP_CAI
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(mensaje);
+                Console.ResetColor();
                 ingreso = Console.ReadLine();
                 bool existeBarra = false;
                 char[] ingresoArray = ingreso.ToArray();
@@ -227,6 +232,7 @@ namespace TP_CAI
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(mensaje);
+                Console.ResetColor();
                 var ingreso = Console.ReadLine();
                 bool ingresoCorrecto = int.TryParse(ingreso, out salida);
                 if (!ingresoCorrecto)
