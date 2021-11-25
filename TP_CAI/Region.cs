@@ -482,7 +482,7 @@ namespace TP_CAI
         public int VerSucursalPorLocalidad(int codigoLocalidad)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Código Sucursal \t\t\tNombre Sucursal");
+            Console.WriteLine("Código Sucursal \tNombre Sucursal");
             Console.ResetColor();
             Dictionary<int, string> auxiliarLocalidad = new Dictionary<int, string>();
             bool encontrado = false;

@@ -158,8 +158,10 @@ namespace TP_CAI
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(mensaje);
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(mensajeOpciones);
+                Console.ResetColor();
                 var ingreso = Console.ReadLine();
                 bool ingresoCorrecto = int.TryParse(ingreso, out opcion);
                 if (!ingresoCorrecto)

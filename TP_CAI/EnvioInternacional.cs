@@ -139,7 +139,7 @@ namespace TP_CAI
                 }
             }
             //-------------------------------------------------------------------------TARIFA AL PAIS DESTINO---------------------------------------------------------
-            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "Países Limitrofes")
+            if (nuevoEnvioInternacional.NuevaSeleccionEntregaInt.NombreRegionEntregaInt == "Países Limítrofes")
             {
                 tarifa *= 1.25M;
             }

@@ -1,8 +1,8 @@
-1|Uruguay|Países Limitrofes
-2|Paraguay|Países Limitrofes
-3|Brasil|Países Limitrofes
-4|Chile|Países Limitrofes
-5|Bolivia|Países Limitrofes
+1|Uruguay|Países Limítrofes
+2|Paraguay|Países Limítrofes
+3|Brasil|Países Limítrofes
+4|Chile|Países Limítrofes
+5|Bolivia|Países Limítrofes
 6|Colombia|Lationamérica (no limítrofes)
 7|Perú|Lationamérica (no limítrofes)
 8|Ecuador|Lationamérica (no limítrofes)
